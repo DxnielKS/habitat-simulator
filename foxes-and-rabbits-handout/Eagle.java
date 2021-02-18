@@ -17,7 +17,7 @@ public class Eagle extends Animal
     private static final int BREEDING_AGE = 7;
     // The age to which a fox can live.
     // The likelihood of a fox breeding.
-    private static final double BREEDING_PROBABILITY = 0.04;
+    private static final double BREEDING_PROBABILITY = 0.4;
     // The maximum number of births.
     private static final int MAX_LITTER_SIZE = 2;
     // The food value of a single rabbit. In effect, this is the
@@ -55,7 +55,7 @@ public class Eagle extends Animal
             setAge(0);
             foodLevel = FOX_FOOD_VALUE;
         }
-        getGender();
+        setGender();
     }
     
     /**
@@ -71,7 +71,7 @@ public class Eagle extends Animal
         incrementHunger();
         deathByAge();
         if(isAlive()) {
-            giveBirth(newEagles);            
+            canBreed(newEagles);            
             // Move towards a source of food if found.
             Location newLocation = findFood();
             if(newLocation == null) { 
@@ -173,7 +173,7 @@ public class Eagle extends Animal
     private int breed()
     {
         int births = 0;
-        if(canBreed() && rand.nextDouble() <= BREEDING_PROBABILITY) {
+        if(rand.nextDouble() <= BREEDING_PROBABILITY) {
             births = rand.nextInt(MAX_LITTER_SIZE) + 1;
         }
         return births;
@@ -182,8 +182,21 @@ public class Eagle extends Animal
     /**
      * A fox can breed if it has reached the breeding age.
      */
-    private boolean canBreed()
+    private void canBreed(List<Animal> newEagles)
     {
-        return getAge() >= BREEDING_AGE;
+        Field field = getField();
+        List<Location> adjacent = field.adjacentLocations(getLocation());
+        Iterator<Location> it = adjacent.iterator();
+        while(it.hasNext()) {
+            Location where = it.next();
+            Object animal = field.getObjectAt(where);
+            if(animal instanceof Eagle) {
+                Eagle eagle = (Eagle) animal;
+                if(eagle.isAlive() && (getGender() != eagle.getGender()) && eagle.getAge() >= BREEDING_AGE && getAge() >= BREEDING_AGE) { 
+                        giveBirth(newEagles);
+                }
+                }
+        }
     }
-}
+    }
+

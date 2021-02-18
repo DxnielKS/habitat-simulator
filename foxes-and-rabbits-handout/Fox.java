@@ -17,7 +17,7 @@ public class Fox extends Animal
     private static final int BREEDING_AGE = 15;
     // The age to which a fox can live.
     // The likelihood of a fox breeding.
-    private static final double BREEDING_PROBABILITY = 0.15;
+    private static final double BREEDING_PROBABILITY = 0.50;
     // The maximum number of births.
     private static final int MAX_LITTER_SIZE = 2;
     // The food value of a single rabbit. In effect, this is the
@@ -52,7 +52,7 @@ public class Fox extends Animal
             setAge(0);
             foodLevel = RABBIT_FOOD_VALUE;
         }
-        getGender();
+        setGender();
     }
     
     /**
@@ -68,7 +68,7 @@ public class Fox extends Animal
         deathByAge();
         incrementHunger();
         if(isAlive()) {
-            giveBirth(newFoxes);            
+            canBreed(newFoxes);            
             // Move towards a source of food if found.
             Location newLocation = findFood();
             if(newLocation == null) { 
@@ -150,7 +150,7 @@ public class Fox extends Animal
     private int breed()
     {
         int births = 0;
-        if(canBreed() && rand.nextDouble() <= BREEDING_PROBABILITY) {
+        if(rand.nextDouble() <= BREEDING_PROBABILITY) {
             births = rand.nextInt(MAX_LITTER_SIZE) + 1;
         }
         return births;
@@ -159,8 +159,20 @@ public class Fox extends Animal
     /**
      * A fox can breed if it has reached the breeding age.
      */
-    private boolean canBreed()
+    private void canBreed(List<Animal> newFoxes)
     {
-        return getAge() >= BREEDING_AGE;
+        Field field = getField();
+        List<Location> adjacent = field.adjacentLocations(getLocation());
+        Iterator<Location> it = adjacent.iterator();
+        while(it.hasNext()) {
+            Location where = it.next();
+            Object animal = field.getObjectAt(where);
+            if(animal instanceof Fox) {
+                Fox fox = (Fox) animal;
+                if(fox.isAlive() && (getGender() != fox.getGender()) && fox.getAge() >= BREEDING_AGE && getAge() >= BREEDING_AGE) { 
+                        giveBirth(newFoxes);
+                }
+                }
+        }
     }
 }

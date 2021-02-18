@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.Random;
+import java.util.Iterator;
 
 /**
  * A simple model of a rabbit.
@@ -16,9 +17,9 @@ public class Rabbit extends Animal
     private static final int BREEDING_AGE = 5;
     // The age to which a rabbit can live.
     // The likelihood of a rabbit breeding.
-    private static final double BREEDING_PROBABILITY = 0.12;
+    private static final double BREEDING_PROBABILITY = 0.1;
     // The maximum number of births.
-    private static final int MAX_LITTER_SIZE = 4;
+    private static final int MAX_LITTER_SIZE = 1;
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom();
     
@@ -42,7 +43,7 @@ public class Rabbit extends Animal
         if(randomAge) {
             setAge(rand.nextInt(getMaxAge()));
         }
-        getGender();
+        setGender();
     }
     
     /**
@@ -55,7 +56,7 @@ public class Rabbit extends Animal
         incrementAge();
         deathByAge();
         if(isAlive()) {
-            giveBirth(newRabbits);            
+            canBreed(newRabbits);            
             // Try to move into a free location.
             Location newLocation = getField().freeAdjacentLocation(getLocation());
             if(newLocation != null) {
@@ -100,7 +101,7 @@ public class Rabbit extends Animal
     private int breed()
     {
         int births = 0;
-        if(canBreed() && rand.nextDouble() <= BREEDING_PROBABILITY) {
+        if(rand.nextDouble() <= BREEDING_PROBABILITY) {
             births = rand.nextInt(MAX_LITTER_SIZE) + 1;
         }
         return births;
@@ -110,8 +111,20 @@ public class Rabbit extends Animal
      * A rabbit can breed if it has reached the breeding age.
      * @return true if the rabbit can breed, false otherwise.
      */
-    private boolean canBreed()
+    private void canBreed(List<Animal> newRabbits)
     {
-        return getAge() >= BREEDING_AGE;
+        Field field = getField();
+        List<Location> adjacent = field.adjacentLocations(getLocation());
+        Iterator<Location> it = adjacent.iterator();
+        while(it.hasNext()) {
+            Location where = it.next();
+            Object animal = field.getObjectAt(where);
+            if(animal instanceof Rabbit) {
+                Rabbit rabbit = (Rabbit) animal;
+                if(rabbit.isAlive() && (getGender() != rabbit.getGender()) && rabbit.getAge() >= BREEDING_AGE && getAge() >= BREEDING_AGE) { 
+                        giveBirth(newRabbits);
+                }
+                }
+        }
     }
 }

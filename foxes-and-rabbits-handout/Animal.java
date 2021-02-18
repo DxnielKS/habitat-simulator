@@ -56,7 +56,7 @@ public abstract class Animal
     /***
      * 
      */
-    protected void getGender()
+    protected void setGender()
     {
         if (random.nextBoolean())
         {
@@ -66,6 +66,10 @@ public abstract class Animal
         {
             isMale = false;
         }
+    }
+    protected boolean getGender()
+    {
+        return isMale;
     }
     /***
      * Return age 
