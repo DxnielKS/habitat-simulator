@@ -24,7 +24,8 @@ public class Simulator
     private static final double RABBIT_CREATION_PROBABILITY = 0.08;    
     
     private static final double EAGLE_CREATION_PROBABILITY = 0.02;
-
+    
+    private static final double OWL_CREATION_PROBABILITY = 0.02;
     // List of animals in the field.
     private List<Animal> animals;
     // The current state of the field.
