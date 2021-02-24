@@ -19,13 +19,13 @@ public class Simulator
     // The default depth of the grid.
     private static final int DEFAULT_DEPTH = 80;
     // The probability that a fox will be created in any given grid position.
-    private static final double FOX_CREATION_PROBABILITY = 0.04;
+    private static final double FOX_CREATION_PROBABILITY = 0.03;
     // The probability that a rabbit will be created in any given grid position.
-    private static final double RABBIT_CREATION_PROBABILITY = 0.08;    
+    private static final double RABBIT_CREATION_PROBABILITY = 0.06;    
     
-    private static final double EAGLE_CREATION_PROBABILITY = 0.02;
+    private static final double EAGLE_CREATION_PROBABILITY = 0.03;
     
-    private static final double OWL_CREATION_PROBABILITY = 0.02;
+    private static final double OWL_CREATION_PROBABILITY = 0.00;
     // List of animals in the field.
     private List<Animal> animals;
     // The current state of the field.
@@ -65,6 +65,7 @@ public class Simulator
         view.setColor(Rabbit.class, Color.ORANGE);
         view.setColor(Fox.class, Color.BLUE);
         view.setColor(Eagle.class,Color.RED);
+
         
         // Setup a valid starting point.
         reset();
@@ -100,6 +101,7 @@ public class Simulator
     public void simulateOneStep()
     {
         step++;
+        field.getFieldTime().incrementTime();
 
         // Provide space for newborn animals.
         List<Animal> newAnimals = new ArrayList<>();        
@@ -114,7 +116,7 @@ public class Simulator
                
         // Add the newly born foxes and rabbits to the main lists.
         animals.addAll(newAnimals);
-
+        view.setInfoText(field.getFieldTime().getStringTime());
         view.showStatus(step, field);
     }
         
@@ -124,11 +126,13 @@ public class Simulator
     public void reset()
     {
         step = 0;
+        field.getFieldTime().setTime(0);
         animals.clear();
         populate();
         
         // Show the starting state in the view.
         view.showStatus(step, field);
+        view.setInfoText(field.getFieldTime().getStringTime());
     }
     
     /**
@@ -156,7 +160,6 @@ public class Simulator
                   Eagle eagle = new Eagle(true, field, location);
                   animals.add(eagle);  
                 }
-                
                 // else leave the location empty.
             }
         }

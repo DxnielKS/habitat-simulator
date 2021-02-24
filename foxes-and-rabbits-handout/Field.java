@@ -16,6 +16,8 @@ public class Field
     // A random number generator for providing random locations.
     private static final Random rand = Randomizer.getRandom();
     
+    private static Time time;
+    
     // The depth and width of the field.
     private int depth, width;
     // Storage for the animals.
@@ -202,5 +204,10 @@ public class Field
     public int getWidth()
     {
         return width;
+    }
+    
+    public static Time getFieldTime()
+    {
+        return time;
     }
 }

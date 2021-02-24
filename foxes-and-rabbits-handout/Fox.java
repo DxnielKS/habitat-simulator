@@ -17,7 +17,7 @@ public class Fox extends Animal
     private static final int BREEDING_AGE = 15;
     // The age to which a fox can live.
     // The likelihood of a fox breeding.
-    private static final double BREEDING_PROBABILITY = 0.50;
+    private static final double BREEDING_PROBABILITY = 0.4;
     // The maximum number of births.
     private static final int MAX_LITTER_SIZE = 2;
     // The food value of a single rabbit. In effect, this is the
@@ -50,7 +50,7 @@ public class Fox extends Animal
         }
         else {
             setAge(0);
-            foodLevel = RABBIT_FOOD_VALUE;
+            foodLevel = 10;
         }
         setGender();
     }
@@ -172,7 +172,7 @@ public class Fox extends Animal
                 if(fox.isAlive() && (getGender() != fox.getGender()) && fox.getAge() >= BREEDING_AGE && getAge() >= BREEDING_AGE) { 
                         giveBirth(newFoxes);
                 }
-                }
+            }
         }
     }
 }

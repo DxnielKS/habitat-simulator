@@ -17,14 +17,14 @@ public class Eagle extends Animal
     private static final int BREEDING_AGE = 7;
     // The age to which a fox can live.
     // The likelihood of a fox breeding.
-    private static final double BREEDING_PROBABILITY = 0.4;
+    private static final double BREEDING_PROBABILITY = 0.3;
     // The maximum number of births.
     private static final int MAX_LITTER_SIZE = 2;
     // The food value of a single rabbit. In effect, this is the
     // number of steps a fox can go before it has to eat again.
-    private static final int FOX_FOOD_VALUE = 9;
+    private static final int FOX_FOOD_VALUE = 10 ;
     
-    private static final int RABBIT_FOOD_VALUE = 4;
+    private static final int RABBIT_FOOD_VALUE = 9;
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom(); 
 
@@ -120,9 +120,9 @@ public class Eagle extends Animal
                     if (fox.getAge()<25){
                         fox.setDead();
                         foodLevel += FOX_FOOD_VALUE;
-                        if(foodLevel > 9)
+                        if(foodLevel > 15)
                         {
-                        foodLevel = 9;
+                            foodLevel = 15;
                         }
                         return where;
                 }
@@ -135,9 +135,9 @@ public class Eagle extends Animal
                 {
                     rabbit.setDead();
                     foodLevel += RABBIT_FOOD_VALUE;
-                    if(foodLevel > 9)
+                    if(foodLevel > 15)
                     {
-                        foodLevel = 9;
+                        foodLevel = 15;
                     }
                     return where;
                 }
@@ -195,7 +195,7 @@ public class Eagle extends Animal
                 if(eagle.isAlive() && (getGender() != eagle.getGender()) && eagle.getAge() >= BREEDING_AGE && getAge() >= BREEDING_AGE) { 
                         giveBirth(newEagles);
                 }
-                }
+            }
         }
     }
     }

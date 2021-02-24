@@ -17,7 +17,7 @@ public class Rabbit extends Animal
     private static final int BREEDING_AGE = 5;
     // The age to which a rabbit can live.
     // The likelihood of a rabbit breeding.
-    private static final double BREEDING_PROBABILITY = 0.1;
+    private static final double BREEDING_PROBABILITY = 0.4;
     // The maximum number of births.
     private static final int MAX_LITTER_SIZE = 1;
     // A shared random number generator to control breeding.
@@ -39,7 +39,7 @@ public class Rabbit extends Animal
     {
         super(field, location);
         setAge(0);
-        setMaxAge(90);
+        setMaxAge(30);
         if(randomAge) {
             setAge(rand.nextInt(getMaxAge()));
         }
@@ -124,7 +124,7 @@ public class Rabbit extends Animal
                 if(rabbit.isAlive() && (getGender() != rabbit.getGender()) && rabbit.getAge() >= BREEDING_AGE && getAge() >= BREEDING_AGE) { 
                         giveBirth(newRabbits);
                 }
-                }
+            }
         }
     }
 }

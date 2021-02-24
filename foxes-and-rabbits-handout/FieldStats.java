@@ -42,7 +42,7 @@ public class FieldStats
             buffer.append(info.getName());
             buffer.append(": ");
             buffer.append(info.getCount());
-            buffer.append(' ');
+            buffer.append(": ");
         }
         return buffer.toString();
     }

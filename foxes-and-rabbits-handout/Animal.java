@@ -24,6 +24,7 @@ public abstract class Animal
 
     private boolean isMale;
     
+    
     /**
      * Create a new animal at location in field.
      * 
@@ -37,7 +38,13 @@ public abstract class Animal
         this.field = field;
         setLocation(location);
     }
-    
+    public void sleep()
+    {
+       if (field.getFieldTime().getNight())
+       {
+        
+        }
+    }
     /**
      * Make this animal act - that is: make it do
      * whatever it wants/needs to do.
@@ -53,6 +60,8 @@ public abstract class Animal
     {
         return alive;
     }
+    
+    
     /***
      * 
      */
@@ -122,7 +131,7 @@ public abstract class Animal
      * It is removed from the field.
      */
     protected void setDead()
-    {
+    { 
         alive = false;
         if(location != null) {
             field.clear(location);

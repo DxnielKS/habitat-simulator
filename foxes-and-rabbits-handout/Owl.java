@@ -11,11 +11,7 @@ import java.util.Random;
  */
 public class Owl extends Animal
 {
-<<<<<<< HEAD
-    public void act(List<Animal> newEagles)
-    {
-        skip;
-=======
+
     // Characteristics shared by all owles (class variables).
     
     // The age at which an owl can start to breed.
@@ -71,7 +67,7 @@ public class Owl extends Animal
         if(isAlive()) {
             giveBirth(newEagles);            
             // Move towards a source of food if found.
-            Location newLocation = findFood();
+            Location newLocation = null;
             if(newLocation == null) { 
                 // No food found - try to move to a free location.
                 newLocation = getField().freeAdjacentLocation(getLocation());
@@ -99,57 +95,13 @@ public class Owl extends Animal
         }
     }
     
-    /**
-     * Look for rabbits adjacent to the current location.
-     * Only the first live rabbit is eaten.
-     * @return Where food was found, or null if it wasn't.
-     */
-    private Location findFood()
-    {
-        Field field = getField();
-        List<Location> adjacent = field.adjacentLocations(getLocation());
-        Iterator<Location> it = adjacent.iterator();
-        while(it.hasNext()) {
-            Location where = it.next();
-            Object animal = field.getObjectAt(where);
-            if(animal instanceof Owl) {
-                Owl owl = (Owl) animal;
-                if(owl.isAlive()) { 
-                    if (owl.getAge()<25){
-                        owl.setDead();
-                        foodLevel += OWL_FOOD_VALUE;
-                        if(foodLevel > 9)
-                        {
-                        foodLevel = 9;
-                        }
-                        return where;
-                }
-                }
-            }
-            else if(animal instanceof Rabbit)
-            {
-                Rabbit rabbit = (Rabbit) animal;
-                if (rabbit.isAlive())
-                {
-                    rabbit.setDead();
-                    foodLevel += RABBIT_FOOD_VALUE;
-                    if(foodLevel > 9)
-                    {
-                        foodLevel = 9;
-                    }
-                    return where;
-                }
-            }
-        }
-        return null;
-    }
     
     /**
      * Check whether or not this owl is to give birth at this step.
      * New births will be made into free adjacent locations.
      * @param newowles A list to return newly born owles.
      */
-    private void giveBirth(List<Animal> newEagles)
+    private void giveBirth(List<Animal> newOwls)
     {
         // New owles are born into adjacent locations.
         // Get a list of adjacent free locations.
@@ -158,8 +110,8 @@ public class Owl extends Animal
         int births = breed();
         for(int b = 0; b < births && free.size() > 0; b++) {
             Location loc = free.remove(0);
-            Eagle young = new Eagle(false, field, loc);
-            newEagles.add(young);
+            Owl young = new Owl(false, field, loc);
+            newOwls.add(young);
         }
     }
         
@@ -183,6 +135,5 @@ public class Owl extends Animal
     private boolean canBreed()
     {
         return getAge() >= BREEDING_AGE;
->>>>>>> 704cbe1af6ccd6e9d924edb45d0dfd90f0af5ccb
     }
 }
