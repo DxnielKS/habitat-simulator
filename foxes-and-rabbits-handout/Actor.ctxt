@@ -3,16 +3,35 @@ comment0.target=Actor
 comment0.text=\n\ Write\ a\ description\ of\ class\ Actor\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=field\ location
 comment1.target=Actor(Field,\ Location)
+<<<<<<< HEAD
 comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Actor\n
 comment2.params=
 comment2.target=void\ toggleNocturnal()
 comment3.params=newLocation
 comment3.target=void\ setLocation(Location)
 comment3.text=\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\n\n\ @param\ \ y\ \ a\ sample\ parameter\ for\ a\ method\n\ @return\ \ \ \ the\ sum\ of\ x\ and\ y\n
+=======
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Actor\r\n
+comment10.params=newAge
+comment10.target=void\ setMaxAge(int)
+comment10.text=\r\n\ set\ age\r\n
+comment11.params=
+comment11.target=void\ incrementAge()
+comment11.text=\r\n\ increment\ age\r\n
+comment12.params=
+comment12.target=void\ deathByAge()
+comment2.params=newLocation
+comment2.target=void\ setLocation(Location)
+comment2.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\r\n\ @param\ \ y\ \ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ \ \ \ the\ sum\ of\ x\ and\ y\r\n
+comment3.params=
+comment3.target=Field\ getField()
+comment3.text=\r\n\ \r\n
+>>>>>>> d14667379c94a773ca41815f0eac0470b07b3e41
 comment4.params=
 comment4.target=Field\ getField()
 comment4.text=\n\ \n
 comment5.params=
+<<<<<<< HEAD
 comment5.target=void\ setDead()
 comment6.params=
 comment6.target=Location\ getLocation()
@@ -21,3 +40,20 @@ comment7.params=
 comment7.target=boolean\ isAlive()
 comment7.text=\n\ Check\ whether\ the\ animal\ is\ alive\ or\ not.\n\ @return\ true\ if\ the\ animal\ is\ still\ alive.\n
 numComments=8
+=======
+comment5.target=Location\ getLocation()
+comment5.text=\r\n\ Return\ the\ actors's\ location.\r\n\ @return\ The\ actors's\ location.\r\n
+comment6.params=
+comment6.target=boolean\ isAlive()
+comment6.text=\r\n\ Check\ whether\ the\ animal\ is\ alive\ or\ not.\r\n\ @return\ true\ if\ the\ animal\ is\ still\ alive.\r\n
+comment7.params=
+comment7.target=int\ getAge()
+comment7.text=\r\n\ Return\ age\ \r\n
+comment8.params=newAge
+comment8.target=void\ setAge(int)
+comment8.text=\r\n\ set\ age\r\n
+comment9.params=
+comment9.target=int\ getMaxAge()
+comment9.text=\r\n\ Return\ maxAge\ \r\n
+numComments=13
+>>>>>>> d14667379c94a773ca41815f0eac0470b07b3e41

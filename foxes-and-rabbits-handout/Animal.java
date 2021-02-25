@@ -18,9 +18,6 @@ public abstract class Animal extends Actor
 
     private Random random = new Random();
     
-    private int age;
-    
-    private int maxAge;
 
     private boolean isMale;
     
@@ -34,7 +31,6 @@ public abstract class Animal extends Actor
     public Animal(Field field, Location location)
     {
         super(field,location);
-        age = 0;
     }
     public boolean getNight()
     {
@@ -69,51 +65,6 @@ public abstract class Animal extends Actor
     protected boolean getGender()
     {
         return isMale;
-    }
-    /***
-     * Return age 
-     */
-    protected int getAge()
-    {
-        return age;
-    }
-    /***
-     * set age
-     */
-    protected void setAge(int newAge)
-    {
-        age = newAge;
-    }
-     /***
-     * Return maxAge 
-     */
-    protected int getMaxAge()
-    {
-        return maxAge;
-    }
-    /***
-     * set age
-     */
-    protected void setMaxAge(int newAge)
-    {
-        maxAge = newAge;
-    }
-    /***
-     * increment age
-     */
-    protected void incrementAge()
-    {
-        age++;
-    }
-    /***
-     * death by aging
-     */
-    protected void deathByAge()
-    {
-        if (age> maxAge)
-        {
-            setDead();
-        }
     }
    
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #BlueJ class context
 comment0.target=Animal
 comment0.text=\n\ A\ class\ representing\ shared\ characteristics\ of\ animals.\n\ \n\ @author\ David\ J.\ Barnes\ and\ Michael\ K\u00F6lling\n\ @version\ 2016.02.29\ (2)\n
@@ -33,3 +34,22 @@ comment9.params=newAge
 comment9.target=void\ setMaxAge(int)
 comment9.text=\n\ set\ age\n
 numComments=12
+=======
+#BlueJ class context
+comment0.target=Animal
+comment0.text=\r\n\ A\ class\ representing\ shared\ characteristics\ of\ animals.\r\n\ \r\n\ @author\ David\ J.\ Barnes\ and\ Michael\ K\u00F6lling\r\n\ @version\ 2016.02.29\ (2)\r\n
+comment1.params=field\ location
+comment1.target=Animal(Field,\ Location)
+comment1.text=\r\n\ Create\ a\ new\ animal\ at\ location\ in\ field.\r\n\ \r\n\ @param\ field\ The\ field\ currently\ occupied.\r\n\ @param\ location\ The\ location\ within\ the\ field.\r\n
+comment2.params=
+comment2.target=void\ sleep()
+comment3.params=newAnimals
+comment3.target=void\ act(java.util.List)
+comment3.text=\r\n\ Make\ this\ animal\ act\ -\ that\ is\:\ make\ it\ do\r\n\ whatever\ it\ wants/needs\ to\ do.\r\n\ @param\ newAnimals\ A\ list\ to\ receive\ newly\ born\ animals.\r\n
+comment4.params=
+comment4.target=void\ setGender()
+comment4.text=\r\n\ \r\n
+comment5.params=
+comment5.target=boolean\ getGender()
+numComments=6
+>>>>>>> d14667379c94a773ca41815f0eac0470b07b3e41

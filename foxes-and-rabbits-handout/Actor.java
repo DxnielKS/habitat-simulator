@@ -7,7 +7,7 @@ import java.util.Random;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Actor
+public abstract class Actor
 {
     // instance variables - replace the example below with your own
     private boolean alive;
@@ -16,8 +16,15 @@ public class Actor
     // The animal's position in the field.
     private Location location;
     
+<<<<<<< HEAD
     private boolean isNocturnal;
     
+=======
+    private int age;
+    
+    private int maxAge;
+
+>>>>>>> d14667379c94a773ca41815f0eac0470b07b3e41
     private Random random = new Random();
 
     /**
@@ -55,7 +62,7 @@ public class Actor
     {
         return field;
     }
-        protected void setDead()
+    protected void setDead()
     { 
         alive = false;
         if(location != null) {
@@ -64,7 +71,7 @@ public class Actor
             field = null;
         }
     }
-
+    
     /**
      * Return the actors's location.
      * @return The actors's location.
@@ -80,5 +87,47 @@ public class Actor
         protected boolean isAlive()
     {
         return alive;
+    }
+        /***
+     * Return age 
+     */
+    protected int getAge()
+    {
+        return age;
+    }
+    /***
+     * set age
+     */
+    protected void setAge(int newAge)
+    {
+        age = newAge;
+    }
+     /***
+     * Return maxAge 
+     */
+    protected int getMaxAge()
+    {
+        return maxAge;
+    }
+    /***
+     * set age
+     */
+    protected void setMaxAge(int newAge)
+    {
+        maxAge = newAge;
+    }
+    /***
+     * increment age
+     */
+    protected void incrementAge()
+    {
+        age++;
+    }
+    protected void deathByAge()
+    {
+        if (age> maxAge)
+        {
+            setDead();
+        }
     }
 }

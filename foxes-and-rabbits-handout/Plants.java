@@ -7,11 +7,28 @@ import java.util.Random;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Plants extends Actor
+public abstract class Plants extends Actor
 {
     // instance variables - replace the example below with your own
+    private static double FERTILITY_RATE;
+    
+    
+    
     public Plants(Field field, Location location)
     {
         super(field,location);
     }
+    
+    public abstract void act(List<Plants> newPlants);
+    
+    protected double getFertility()
+    {
+        return FERTILITY_RATE;
+    }
+    
+    protected void setFertility(double newRate)
+    {
+        FERTILITY_RATE = newRate;
+    }
+    
 }
