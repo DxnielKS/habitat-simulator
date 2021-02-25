@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Grass
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Grass\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=field\ location
+comment1.target=Grass(Field,\ Location)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Grass\r\n
+comment2.params=newGrass
+comment2.target=void\ act(java.util.List)
+comment2.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\r\n\ @param\ \ y\ \ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ \ \ \ the\ sum\ of\ x\ and\ y\r\n
+comment3.params=newGrass
+comment3.target=void\ grow(java.util.List)
+numComments=4

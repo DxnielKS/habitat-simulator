@@ -21,13 +21,17 @@ public class Simulator
     // The probability that a fox will be created in any given grid position.
     private static final double FOX_CREATION_PROBABILITY = 0.03;
     // The probability that a rabbit will be created in any given grid position.
-    private static final double RABBIT_CREATION_PROBABILITY = 0.06;    
+    private static final double RABBIT_CREATION_PROBABILITY = 0.03;    
     
     private static final double EAGLE_CREATION_PROBABILITY = 0.03;
     
     private static final double OWL_CREATION_PROBABILITY = 0.00;
+    
+    private static final double GRASS_CREATION_PROBABILITY = 0.06;
     // List of animals in the field.
     private List<Animal> animals;
+    
+    private List<Plants> plants;
     // The current state of the field.
     private Field field;
     // The current step of the simulation.
@@ -59,12 +63,14 @@ public class Simulator
         
         animals = new ArrayList<>();
         field = new Field(depth, width);
+        plants = new ArrayList<>();
 
         // Create a view of the state of each location in the field.
         view = new SimulatorView(depth, width);
         view.setColor(Rabbit.class, Color.ORANGE);
         view.setColor(Fox.class, Color.BLUE);
         view.setColor(Eagle.class,Color.RED);
+        view.setColor(Plants.class,Color.GREEN);
 
         
         // Setup a valid starting point.
@@ -104,8 +110,18 @@ public class Simulator
         field.getFieldTime().incrementTime();
 
         // Provide space for newborn animals.
-        List<Animal> newAnimals = new ArrayList<>();        
+        List<Animal> newAnimals = new ArrayList<>();    
+        List<Plants> newPlants = new ArrayList<>();
         // Let all rabbits act.
+        for(Iterator<Plants> it = plants.iterator(); it.hasNext(); ) {
+            Plants plants = it.next();
+            plants.act(newPlants);
+            if(! plants.isAlive()) {
+                it.remove();
+            }
+        }   
+      
+        
         for(Iterator<Animal> it = animals.iterator(); it.hasNext(); ) {
             Animal animal = it.next();
             animal.act(newAnimals);
@@ -128,6 +144,7 @@ public class Simulator
         step = 0;
         field.getFieldTime().setTime(0);
         animals.clear();
+        plants.clear();
         populate();
         
         // Show the starting state in the view.
@@ -159,6 +176,12 @@ public class Simulator
                   Location location = new Location(row, col);
                   Eagle eagle = new Eagle(true, field, location);
                   animals.add(eagle);  
+                }
+                else if(rand.nextDouble() <= GRASS_CREATION_PROBABILITY)
+                {
+                  Location location = new Location(row, col);
+                  Grass grass = new Grass(field, location);
+                  plants.add(grass);  
                 }
                 // else leave the location empty.
             }
