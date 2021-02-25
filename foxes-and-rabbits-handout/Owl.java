@@ -41,6 +41,7 @@ public class Owl extends Animal
     {
         super(field, location);
         setMaxAge(100);
+        this.toggleNocturnal();
         if(randomAge) {
             setAge(rand.nextInt(getMaxAge()));
             foodLevel = rand.nextInt(OWL_FOOD_VALUE);
@@ -59,13 +60,13 @@ public class Owl extends Animal
      * @param field The field currently occupied.
      * @param newowles A list to return newly born owles.
      */
-    public void act(List<Animal> newEagles)
+    public void act(List<Animal> newOwls)
     {
         incrementAge();
         incrementHunger();
         deathByAge();
-        if(isAlive()) {
-            giveBirth(newEagles);            
+        if(isAlive() && owl.getNight()) {
+            giveBirth(newOwls);            
             // Move towards a source of food if found.
             Location newLocation = null;
             if(newLocation == null) { 

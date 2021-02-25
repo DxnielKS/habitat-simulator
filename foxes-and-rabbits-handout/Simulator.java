@@ -25,7 +25,7 @@ public class Simulator
     
     private static final double EAGLE_CREATION_PROBABILITY = 0.03;
     
-    private static final double OWL_CREATION_PROBABILITY = 0.00;
+    private static final double OWL_CREATION_PROBABILITY = 0.03;
     // List of animals in the field.
     private List<Animal> animals;
     // The current state of the field.
@@ -34,6 +34,7 @@ public class Simulator
     private int step;
     // A graphical view of the simulation.
     private SimulatorView view;
+ 
     
     /**
      * Construct a simulation field with default size.
@@ -65,6 +66,7 @@ public class Simulator
         view.setColor(Rabbit.class, Color.ORANGE);
         view.setColor(Fox.class, Color.BLUE);
         view.setColor(Eagle.class,Color.RED);
+        view.setColor(Owl.class,Color.YELLOW);
 
         
         // Setup a valid starting point.
@@ -159,6 +161,12 @@ public class Simulator
                   Location location = new Location(row, col);
                   Eagle eagle = new Eagle(true, field, location);
                   animals.add(eagle);  
+                }
+                else if(rand.nextDouble() <= OWL_CREATION_PROBABILITY)
+                {
+                  Location location = new Location(row, col);
+                  Owl owl = new Owl(true, field, location);
+                  animals.add(owl);  
                 }
                 // else leave the location empty.
             }

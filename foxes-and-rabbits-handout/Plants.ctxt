@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Plants
+comment0.text=\n\ Write\ a\ description\ of\ class\ Plants\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=field\ location
+comment1.target=Plants(Field,\ Location)
+numComments=2

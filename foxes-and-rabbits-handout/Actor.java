@@ -15,7 +15,9 @@ public class Actor
     private Field field;
     // The animal's position in the field.
     private Location location;
-
+    
+    private boolean isNocturnal;
+    
     private Random random = new Random();
 
     /**
@@ -24,10 +26,14 @@ public class Actor
     public Actor(Field field, Location location)
     {
         alive = true;
+        isNocturnal = false;
         this.field = field;
         setLocation(location);
     }
-
+    protected void toggleNocturnal()
+    {
+        this.isNocturnal = !(this.isNocturnal);
+    }
     /**
      * An example of a method - replace this comment with your own
      *

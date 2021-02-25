@@ -33,12 +33,7 @@ public class Time
     {
         time = newTime;
     }
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
+
     public static void incrementTime()
      {
         // put your code here

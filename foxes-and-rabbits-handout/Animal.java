@@ -36,12 +36,13 @@ public abstract class Animal extends Actor
         super(field,location);
         age = 0;
     }
-    public void sleep()
+    public boolean getNight()
     {
        if (field.getFieldTime().getNight())
        {
-        
+           return true;
         }
+       return false;
     }
     /**
      * Make this animal act - that is: make it do
@@ -49,7 +50,8 @@ public abstract class Animal extends Actor
      * @param newAnimals A list to receive newly born animals.
      */
     abstract public void act(List<Animal> newAnimals);
-    
+    {
+    }
     /***
      * 
      */
