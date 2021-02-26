@@ -17,6 +17,7 @@ public class Field
     private static final Random rand = Randomizer.getRandom();
     
     private static Time time;
+    // true/false values for the weather
     
     // The depth and width of the field.
     private int depth, width;
@@ -37,6 +38,10 @@ public class Field
     
     /**
      * Empty the field.
+     */
+    
+    /**
+     * A method to change the weather randomly.
      */
     public void clear()
     {
