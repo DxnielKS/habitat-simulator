@@ -14,18 +14,21 @@ public class Rabbit extends Animal
     // Characteristics shared by all rabbits (class variables).
 
     // The age at which a rabbit can start to breed.
-    private static final int BREEDING_AGE = 5;
+    private static final int BREEDING_AGE = 3;
     // The age to which a rabbit can live.
     // The likelihood of a rabbit breeding.
-    private static final double BREEDING_PROBABILITY = 0.4;
+    private static final double BREEDING_PROBABILITY = 0.35;
     // The maximum number of births.
-    private static final int MAX_LITTER_SIZE = 1;
+    private static final int MAX_LITTER_SIZE = 4;
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom();
     
+    private static final int GRASS_FOOD_VALUE = 15;
     // Individual characteristics (instance fields).
     
     // The rabbit's age.
+    
+    
 
     /**
      * Create a new rabbit. A rabbit may be created with age
@@ -44,6 +47,7 @@ public class Rabbit extends Animal
             setAge(rand.nextInt(getMaxAge()));
         }
         setGender();
+        setFoodLevel(GRASS_FOOD_VALUE);
     }
     
     /**
@@ -55,10 +59,16 @@ public class Rabbit extends Animal
     {
         incrementAge();
         deathByAge();
-        if(isAlive()) {
+        incrementHunger();
+        if(isAlive()){
             canBreed(newRabbits);            
             // Try to move into a free location.
-            Location newLocation = getField().freeAdjacentLocation(getLocation());
+            Location newLocation = findFood();
+            if (newLocation == null)
+            {
+                newLocation = getField().freeAdjacentLocation(getLocation());
+            }
+            
             if(newLocation != null) {
                 setLocation(newLocation);
             }
@@ -122,5 +132,25 @@ public class Rabbit extends Animal
                 }
             }
         }
+    }
+    
+    private Location findFood()
+    {
+        Field field = getField();
+        List<Location> adjacent = field.adjacentLocations(getLocation());
+        Iterator<Location> it = adjacent.iterator();
+        while(it.hasNext()) {
+            Location where = it.next();
+            Object plant = field.getObjectAt(where);
+            if(plant instanceof Grass) {
+                Grass grass = (Grass) plant;
+                if(grass.isAlive()) { 
+                    grass.setDead();
+                    setFoodLevel(getFoodLevel()+GRASS_FOOD_VALUE);
+                    return where;
+                }
+            }
+        }
+        return null;
     }
 }

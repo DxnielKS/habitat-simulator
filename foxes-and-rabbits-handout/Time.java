@@ -32,10 +32,12 @@ public class Time
     public static void setTime(int newTime)
     {
         time = newTime;
+        daysPassed = 0;
+        currentTime = time/10;
     }
 
     public static void incrementTime()
-     {
+    {
         // put your code here
         time++;
         if (time>= 240)
@@ -48,12 +50,13 @@ public class Time
     
     public static String getStringTime()
     {
-        String timeString = ("Time: "+ currentTime + ":00"); 
+        String timeString = ("Time: "+ currentTime + ":00 and Days Passed: " + daysPassed); 
         return timeString;
     }
     
     public static void setTimeOfDay()
     {
+        incrementTime();
         if (time>=0 && time < 70)
         {
             night = true;
@@ -94,6 +97,14 @@ public class Time
         return night;
     }
     
+    public static boolean getEvening()
+    {
+        return evening;
+    }
+    public static boolean getAfternoon()
+    {
+        return afternoon;
+    }
     public static int getDays()
     {
         return daysPassed;

@@ -17,14 +17,14 @@ public class Eagle extends Animal
     private static final int BREEDING_AGE = 7;
     // The age to which a fox can live.
     // The likelihood of a fox breeding.
-    private static final double BREEDING_PROBABILITY = 0.3;
+    private static final double BREEDING_PROBABILITY = 0.6;
     // The maximum number of births.
     private static final int MAX_LITTER_SIZE = 2;
     // The food value of a single rabbit. In effect, this is the
     // number of steps a fox can go before it has to eat again.
-    private static final int FOX_FOOD_VALUE = 10 ;
+    private static final int FOX_FOOD_VALUE = 5 ;
     
-    private static final int RABBIT_FOOD_VALUE = 9;
+    private static final int RABBIT_FOOD_VALUE = 3;
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom(); 
 
@@ -32,7 +32,7 @@ public class Eagle extends Animal
     // Individual characteristics (instance fields).
     // The fox's age.
     // The fox's food level, which is increased by eating rabbits.
-    private int foodLevel; 
+    
 
  
     /**
@@ -46,14 +46,14 @@ public class Eagle extends Animal
     public Eagle(boolean randomAge, Field field, Location location)
     {
         super(field, location);
-        setMaxAge(100);
+        setMaxAge(50);
         if(randomAge) {
             setAge(rand.nextInt(getMaxAge()));
-            foodLevel = rand.nextInt(FOX_FOOD_VALUE);
+            setFoodLevel(rand.nextInt(FOX_FOOD_VALUE));
         }
         else {
             setAge(0);
-            foodLevel = FOX_FOOD_VALUE;
+            setFoodLevel(FOX_FOOD_VALUE);
         }
         setGender();
     }
@@ -91,17 +91,6 @@ public class Eagle extends Animal
 
     
     /**
-     * Make this fox more hungry. This could result in the fox's death.
-     */
-    private void incrementHunger()
-    {
-        foodLevel--;
-        if(foodLevel <= 0) {
-            setDead();
-        }
-    }
-    
-    /**
      * Look for rabbits adjacent to the current location.
      * Only the first live rabbit is eaten.
      * @return Where food was found, or null if it wasn't.
@@ -117,12 +106,12 @@ public class Eagle extends Animal
             if(animal instanceof Fox) {
                 Fox fox = (Fox) animal;
                 if(fox.isAlive()) { 
-                    if (fox.getAge()<25){
+                    if (fox.getAge()<7){
                         fox.setDead();
-                        foodLevel += FOX_FOOD_VALUE;
-                        if(foodLevel > 15)
+                        setFoodLevel( getFoodLevel() + FOX_FOOD_VALUE);
+                        if(getFoodLevel() > 10)
                         {
-                            foodLevel = 15;
+                            setFoodLevel(10);
                         }
                         return where;
                 }
@@ -134,10 +123,10 @@ public class Eagle extends Animal
                 if (rabbit.isAlive())
                 {
                     rabbit.setDead();
-                    foodLevel += RABBIT_FOOD_VALUE;
-                    if(foodLevel > 15)
+                    setFoodLevel( getFoodLevel() + RABBIT_FOOD_VALUE);
+                    if(getFoodLevel()> 10)
                     {
-                        foodLevel = 15;
+                        setFoodLevel(10);
                     }
                     return where;
                 }

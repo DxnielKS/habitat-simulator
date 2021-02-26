@@ -19,13 +19,13 @@ public class Simulator
     // The default depth of the grid.
     private static final int DEFAULT_DEPTH = 80;
     // The probability that a fox will be created in any given grid position.
-    private static final double FOX_CREATION_PROBABILITY = 0.03;
+    private static final double FOX_CREATION_PROBABILITY = 0.012;
     // The probability that a rabbit will be created in any given grid position.
-    private static final double RABBIT_CREATION_PROBABILITY = 0.03;    
+    private static final double RABBIT_CREATION_PROBABILITY = 0.2;    
 
-    private static final double EAGLE_CREATION_PROBABILITY = 0.03; 
+    private static final double EAGLE_CREATION_PROBABILITY = 0.13; 
 
-    private static final double OWL_CREATION_PROBABILITY = 0.03;
+    private static final double OWL_CREATION_PROBABILITY = 0.09;
     
     private static final double GRASS_CREATION_PROBABILITY = 0.06;
 
@@ -73,7 +73,7 @@ public class Simulator
         view.setColor(Fox.class, Color.BLUE);
         view.setColor(Eagle.class,Color.RED);
 
-        view.setColor(Owl.class,Color.YELLOW);
+        view.setColor(Owl.class,Color.MAGENTA);
 
         view.setColor(Grass.class,Color.GREEN);
 
@@ -113,24 +113,38 @@ public class Simulator
     public void simulateOneStep()
     {
         step++;
-        field.getFieldTime().incrementTime();
+        field.getFieldTime().setTimeOfDay();
+        
+        setBackgroundColor();
 
         // Provide space for newborn animals.
         List<Animal> newAnimals = new ArrayList<>();    
         List<Plants> newPlants = new ArrayList<>();
         // Let all rabbits act.
+        
         for(Iterator<Plants> it = plants.iterator(); it.hasNext(); ) {
             Plants plants = it.next();
-            plants.act(newPlants);
+            if (field.getFieldTime().getNight() == false)
+                {
+                    plants.act(newPlants);
+            }
+            
             if(! plants.isAlive()) {
                 it.remove();
             }
         }   
       
-        
         for(Iterator<Animal> it = animals.iterator(); it.hasNext(); ) {
             Animal animal = it.next();
-            animal.act(newAnimals);
+            if (field.getFieldTime().getNight() && (animal.getNocturnal() == true) )
+            {
+                animal.act(newAnimals);
+            }
+            else if (field.getFieldTime().getNight() == false && animal.getNocturnal() == false)
+            {
+                animal.act(newAnimals);
+            }
+            
             if(! animal.isAlive()) {
                 it.remove();
             }
@@ -138,6 +152,7 @@ public class Simulator
                
         // Add the newly born foxes and rabbits to the main lists.
         animals.addAll(newAnimals);
+        plants.addAll(newPlants);
         view.setInfoText(field.getFieldTime().getStringTime());
         view.showStatus(step, field);
     }
@@ -214,6 +229,22 @@ public class Simulator
         }
         catch (InterruptedException ie) {
             // wake up
+        }
+    }
+    
+    private void setBackgroundColor()
+    {
+        if (field.getFieldTime().getNight())
+        {
+            view.setEmptyColor(Color.black);
+        }
+        else if (field.getFieldTime().getMorning())
+        {
+            view.setEmptyColor(Color.white);
+        }
+        else
+        {
+            view.setEmptyColor(Color.gray);
         }
     }
 }

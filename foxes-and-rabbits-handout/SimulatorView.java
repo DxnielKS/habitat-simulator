@@ -17,10 +17,10 @@ import java.util.Map;
 public class SimulatorView extends JFrame
 {
     // Colors used for empty locations.
-    private static final Color EMPTY_COLOR = Color.white;
+    private static Color EMPTY_COLOR = Color.white;
 
     // Color used for objects that have no defined color.
-    private static final Color UNKNOWN_COLOR = Color.gray;
+    private static final Color UNKNOWN_COLOR = Color.cyan;
 
     private final String STEP_PREFIX = "Step: ";
     private final String POPULATION_PREFIX = "Population: ";
@@ -72,7 +72,12 @@ public class SimulatorView extends JFrame
     {
         colors.put(animalClass, color);
     }
-
+    
+    public void setEmptyColor(Color color)
+    {
+        EMPTY_COLOR = color;
+    }
+    
     /**
      * Display a short information label at the top of the window.
      */

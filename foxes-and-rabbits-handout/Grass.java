@@ -9,7 +9,7 @@ import java.util.Random;
 public class Grass extends Plants
 {
     // instance variables - replace the example below with your own
-    private int x;
+    private static final Random rand = Randomizer.getRandom();
 
     /**
      * Constructor for objects of class Grass
@@ -17,8 +17,10 @@ public class Grass extends Plants
     public Grass(Field field, Location location)
     {
         super(field,location);
-        setMaxAge(150);
+        setMaxAge(15);
         setAge(0);
+        setFertility(0.47);
+        
     }
 
     /**
@@ -29,11 +31,11 @@ public class Grass extends Plants
      */
     public void act(List <Plants> newGrass)
     {
-        // put your code here
         incrementAge();
         deathByAge();
-        
-        grow(newGrass);
+        if (isAlive()){
+            grow(newGrass);
+        }
     }
     
     public void grow(List<Plants> newGrass)
@@ -43,8 +45,11 @@ public class Grass extends Plants
             Location newLocation = getField().freeAdjacentLocation(getLocation());
             if (newLocation != null)
             {
-                Grass grownGrass = new Grass(getField(),newLocation); 
-                newGrass.add(grownGrass);
+                if(rand.nextDouble() <= getFertility())
+                {    
+                    Grass grownGrass = new Grass(getField(),newLocation); 
+                    newGrass.add(grownGrass);
+                }
             }
         }
     }

@@ -12,12 +12,12 @@ public abstract class Animal extends Actor
     // Whether the animal is alive or not.
     private boolean alive;
     // The animal's field.
-    private Field field;
     // The animal's position in the field.
     private Location location;
 
     private Random random = new Random();
     
+    private int foodLevel;
 
     private boolean isMale;
     
@@ -32,14 +32,6 @@ public abstract class Animal extends Actor
     {
         super(field,location);
     }
-    public boolean getNight()
-    {
-       if (field.getFieldTime().getNight())
-       {
-           return true;
-        }
-       return false;
-    }
     /**
      * Make this animal act - that is: make it do
      * whatever it wants/needs to do.
@@ -51,6 +43,14 @@ public abstract class Animal extends Actor
     /***
      * 
      */
+    public boolean getNight()
+     {
+       if (getField().getFieldTime().getNight())
+       {
+           return true;
+        }
+       return false;
+    }
     protected void setGender()
      {
         if (random.nextBoolean())
@@ -67,4 +67,24 @@ public abstract class Animal extends Actor
         return isMale;
     }
    
+    protected void setFoodLevel(int newLevel)
+    {
+        foodLevel = newLevel;
+    }
+    
+    protected int getFoodLevel()
+    {
+        return foodLevel;
+    }
+    
+    /**
+     * Make this fox more hungry. This could result in the fox's death.
+     */
+    protected void incrementHunger()
+     {
+        foodLevel--;
+        if(foodLevel <= 0) {
+            setDead();
+        }
+    }
 }

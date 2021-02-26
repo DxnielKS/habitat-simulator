@@ -13,14 +13,20 @@ public abstract class Plants extends Actor
     private static double FERTILITY_RATE;
     
     
-    
     public Plants(Field field, Location location)
     {
         super(field,location);
     }
     
     public abstract void act(List<Plants> newPlants);
-    
+    public boolean getNight()
+     {
+       if (getField().getFieldTime().getNight())
+       {
+           return true;
+        }
+       return false;
+    }
     protected double getFertility()
     {
         return FERTILITY_RATE;

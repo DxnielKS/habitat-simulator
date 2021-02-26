@@ -25,4 +25,6 @@ comment7.text=\r\n\ Randomly\ populate\ the\ field\ with\ foxes\ and\ rabbits.\r
 comment8.params=millisec
 comment8.target=void\ delay(int)
 comment8.text=\r\n\ Pause\ for\ a\ given\ time.\r\n\ @param\ millisec\ \ The\ time\ to\ pause\ for,\ in\ milliseconds\r\n
-numComments=9
+comment9.params=
+comment9.target=void\ setBackgroundColor()
+numComments=10

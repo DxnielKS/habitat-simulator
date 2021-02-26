@@ -37,6 +37,10 @@ public abstract class Actor
         this.field = field;
         setLocation(location);
     }
+    protected boolean getNocturnal()
+    {
+        return isNocturnal;
+    }
     protected void toggleNocturnal()
     {
         this.isNocturnal = !(this.isNocturnal);
@@ -106,7 +110,7 @@ public abstract class Actor
      * Return maxAge 
      */
     protected int getMaxAge()
-    {
+     {
         return maxAge;
     }
     /***
@@ -130,4 +134,6 @@ public abstract class Actor
             setDead();
         }
     }
+
 }
+

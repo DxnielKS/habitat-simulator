@@ -85,16 +85,6 @@ public class Owl extends Animal
     }
 
     
-    /**
-     * Make this owl more hungry. This could result in the owl's death.
-     */
-    private void incrementHunger()
-    {
-        foodLevel--;
-        if(foodLevel <= 0) {
-            setDead();
-        }
-    }
     
     
     /**

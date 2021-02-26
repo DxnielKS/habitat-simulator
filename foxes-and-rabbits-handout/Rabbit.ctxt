@@ -16,4 +16,6 @@ comment4.text=\r\n\ Generate\ a\ number\ representing\ the\ number\ of\ births,\
 comment5.params=newRabbits
 comment5.target=void\ canBreed(java.util.List)
 comment5.text=\r\n\ A\ rabbit\ can\ breed\ if\ it\ has\ reached\ the\ breeding\ age.\r\n\ @return\ true\ if\ the\ rabbit\ can\ breed,\ false\ otherwise.\r\n
-numComments=6
+comment6.params=
+comment6.target=Location\ findFood()
+numComments=7

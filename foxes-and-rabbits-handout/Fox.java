@@ -14,12 +14,12 @@ public class Fox extends Animal
     // Characteristics shared by all foxes (class variables).
     
     // The age at which a fox can start to breed.
-    private static final int BREEDING_AGE = 15;
+    private static final int BREEDING_AGE = 5;
     // The age to which a fox can live.
     // The likelihood of a fox breeding.
-    private static final double BREEDING_PROBABILITY = 0.4;
+    private static final double BREEDING_PROBABILITY = 0.5;
     // The maximum number of births.
-    private static final int MAX_LITTER_SIZE = 2;
+    private static final int MAX_LITTER_SIZE = 5;
     // The food value of a single rabbit. In effect, this is the
     // number of steps a fox can go before it has to eat again.
     private static final int RABBIT_FOOD_VALUE = 9;
@@ -27,9 +27,7 @@ public class Fox extends Animal
     private static final Random rand = Randomizer.getRandom();
     // Individual characteristics (instance fields).
     // The fox's age.
-    private int age;
     // The fox's food level, which is increased by eating rabbits.
-    private int foodLevel; 
 
  
     /**
@@ -46,11 +44,11 @@ public class Fox extends Animal
         setMaxAge(70);
         if(randomAge) {
             setAge(rand.nextInt(getMaxAge()));
-            foodLevel = rand.nextInt(RABBIT_FOOD_VALUE);
+            setFoodLevel(rand.nextInt(RABBIT_FOOD_VALUE));
         }
         else {
             setAge(0);
-            foodLevel = 10;
+            setFoodLevel(10);
         }
         setGender();
     }
@@ -65,8 +63,8 @@ public class Fox extends Animal
     public void act(List<Animal> newFoxes)
     {
         incrementAge();
-        deathByAge();
         incrementHunger();
+        deathByAge();
         if(isAlive()) {
             canBreed(newFoxes);            
             // Move towards a source of food if found.
@@ -83,18 +81,6 @@ public class Fox extends Animal
                 // Overcrowding.
                 setDead();
             }
-        }
-    }
-
-    
-    /**
-     * Make this fox more hungry. This could result in the fox's death.
-     */
-    private void incrementHunger()
-    {
-        foodLevel--;
-        if(foodLevel <= 0) {
-            setDead();
         }
     }
     
@@ -115,7 +101,7 @@ public class Fox extends Animal
                 Rabbit rabbit = (Rabbit) animal;
                 if(rabbit.isAlive()) { 
                     rabbit.setDead();
-                    foodLevel = RABBIT_FOOD_VALUE;
+                    setFoodLevel(getFoodLevel()+RABBIT_FOOD_VALUE);
                     return where;
                 }
             }
@@ -169,9 +155,9 @@ public class Fox extends Animal
             Object animal = field.getObjectAt(where);
             if(animal instanceof Fox) {
                 Fox fox = (Fox) animal;
-                if(fox.isAlive() && (getGender() != fox.getGender()) && fox.getAge() >= BREEDING_AGE && getAge() >= BREEDING_AGE) { 
-                        giveBirth(newFoxes);
-                }
+                 if(fox.isAlive() && (getGender() != fox.getGender()) && fox.getAge() >= BREEDING_AGE && getAge() >= BREEDING_AGE) { 
+                    giveBirth(newFoxes);
+                 }
             }
         }
     }
