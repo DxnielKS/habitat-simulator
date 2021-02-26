@@ -22,16 +22,13 @@ public class Simulator
     private static final double FOX_CREATION_PROBABILITY = 0.03;
     // The probability that a rabbit will be created in any given grid position.
     private static final double RABBIT_CREATION_PROBABILITY = 0.03;    
-    
-    private static final double EAGLE_CREATION_PROBABILITY = 0.03;
-    
-<<<<<<< HEAD
+
+    private static final double EAGLE_CREATION_PROBABILITY = 0.03; 
+
     private static final double OWL_CREATION_PROBABILITY = 0.03;
-=======
-    private static final double OWL_CREATION_PROBABILITY = 0.00;
     
     private static final double GRASS_CREATION_PROBABILITY = 0.06;
->>>>>>> d14667379c94a773ca41815f0eac0470b07b3e41
+
     // List of animals in the field.
     private List<Animal> animals;
     
@@ -75,11 +72,11 @@ public class Simulator
         view.setColor(Rabbit.class, Color.ORANGE);
         view.setColor(Fox.class, Color.BLUE);
         view.setColor(Eagle.class,Color.RED);
-<<<<<<< HEAD
+
         view.setColor(Owl.class,Color.YELLOW);
-=======
-        view.setColor(Plants.class,Color.GREEN);
->>>>>>> d14667379c94a773ca41815f0eac0470b07b3e41
+
+        view.setColor(Grass.class,Color.GREEN);
+
 
         
         // Setup a valid starting point.
@@ -186,19 +183,20 @@ public class Simulator
                   Eagle eagle = new Eagle(true, field, location);
                   animals.add(eagle);  
                 }
-<<<<<<< HEAD
+
                 else if(rand.nextDouble() <= OWL_CREATION_PROBABILITY)
                 {
                   Location location = new Location(row, col);
                   Owl owl = new Owl(true, field, location);
                   animals.add(owl);  
-=======
-                else if(rand.nextDouble() <= GRASS_CREATION_PROBABILITY)
+
+                }
+                  else if(rand.nextDouble() <= GRASS_CREATION_PROBABILITY)
                 {
                   Location location = new Location(row, col);
                   Grass grass = new Grass(field, location);
                   plants.add(grass);  
->>>>>>> d14667379c94a773ca41815f0eac0470b07b3e41
+
                 }
                 // else leave the location empty.
             }

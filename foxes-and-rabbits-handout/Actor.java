@@ -16,15 +16,15 @@ public abstract class Actor
     // The animal's position in the field.
     private Location location;
     
-<<<<<<< HEAD
+
     private boolean isNocturnal;
     
-=======
+
     private int age;
     
     private int maxAge;
 
->>>>>>> d14667379c94a773ca41815f0eac0470b07b3e41
+
     private Random random = new Random();
 
     /**

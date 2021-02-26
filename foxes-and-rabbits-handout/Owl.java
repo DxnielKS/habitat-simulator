@@ -65,7 +65,7 @@ public class Owl extends Animal
         incrementAge();
         incrementHunger();
         deathByAge();
-        if(isAlive() && owl.getNight()) {
+        if(isAlive() && getNight()) {
             giveBirth(newOwls);            
             // Move towards a source of food if found.
             Location newLocation = null;
