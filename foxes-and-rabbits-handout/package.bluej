@@ -2,6 +2,28 @@
 dependency1.from=Grass
 dependency1.to=Field
 dependency1.type=UsesDependency
+<<<<<<< HEAD
+dependency10.from=Field
+dependency10.to=Randomizer
+dependency10.type=UsesDependency
+dependency11.from=Predator
+dependency11.to=Field
+dependency11.type=UsesDependency
+dependency12.from=Predator
+dependency12.to=Location
+dependency12.type=UsesDependency
+dependency13.from=Eagle
+dependency13.to=Field
+dependency13.type=UsesDependency
+dependency14.from=Eagle
+dependency14.to=Location
+dependency14.type=UsesDependency
+dependency15.from=Eagle
+dependency15.to=Fox
+dependency15.type=UsesDependency
+dependency16.from=Eagle
+dependency16.to=Rabbit
+=======
 dependency10.from=Fox
 dependency10.to=Randomizer
 dependency10.type=UsesDependency
@@ -20,6 +42,7 @@ dependency14.type=UsesDependency
 dependency15.from=Field
 dependency15.to=Randomizer
 dependency15.type=UsesDependency
+<<<<<<< HEAD
 dependency16.from=Animal
 dependency16.to=Field
 dependency16.type=UsesDependency
@@ -30,11 +53,25 @@ dependency18.from=Eagle
 dependency18.to=Field
 dependency18.type=UsesDependency
 dependency19.from=Eagle
+=======
+dependency16.from=Rabbit
+dependency16.to=Randomizer
+>>>>>>> b4e0d03caad4485878e9f00193ccdff548aab832
+dependency16.type=UsesDependency
+dependency17.from=Eagle
+dependency17.to=Randomizer
+dependency17.type=UsesDependency
+dependency18.from=Actor
+dependency18.to=Field
+dependency18.type=UsesDependency
+dependency19.from=Actor
+>>>>>>> 3ae955d33338bda1d4a9c7d391d166f624c8c52f
 dependency19.to=Location
 dependency19.type=UsesDependency
 dependency2.from=Grass
 dependency2.to=Location
 dependency2.type=UsesDependency
+<<<<<<< HEAD
 dependency20.from=Eagle
 dependency20.to=Fox
 dependency20.type=UsesDependency
@@ -43,6 +80,40 @@ dependency21.to=Rabbit
 dependency21.type=UsesDependency
 dependency22.from=Eagle
 dependency22.to=Randomizer
+=======
+dependency20.from=Fox
+dependency20.to=Field
+dependency20.type=UsesDependency
+dependency21.from=Fox
+dependency21.to=Location
+dependency21.type=UsesDependency
+<<<<<<< HEAD
+dependency22.from=Fox
+dependency22.to=Rabbit
+dependency22.type=UsesDependency
+dependency23.from=Fox
+dependency23.to=Randomizer
+dependency23.type=UsesDependency
+dependency24.from=Plants
+dependency24.to=Field
+dependency24.type=UsesDependency
+dependency25.from=Plants
+dependency25.to=Location
+dependency25.type=UsesDependency
+dependency26.from=Simulator
+dependency26.to=Animal
+dependency26.type=UsesDependency
+dependency27.from=Simulator
+dependency27.to=Field
+dependency27.type=UsesDependency
+dependency28.from=Simulator
+dependency28.to=SimulatorView
+dependency28.type=UsesDependency
+dependency29.from=Simulator
+=======
+dependency22.from=Animal
+dependency22.to=Field
+>>>>>>> 3ae955d33338bda1d4a9c7d391d166f624c8c52f
 dependency22.type=UsesDependency
 dependency23.from=Actor
 dependency23.to=Field
@@ -62,14 +133,57 @@ dependency27.type=UsesDependency
 dependency28.from=Rabbit
 dependency28.to=Field
 dependency28.type=UsesDependency
+<<<<<<< HEAD
 dependency29.from=Rabbit
+=======
+dependency29.from=Grass
+>>>>>>> b4e0d03caad4485878e9f00193ccdff548aab832
+>>>>>>> 3ae955d33338bda1d4a9c7d391d166f624c8c52f
 dependency29.to=Location
 dependency29.type=UsesDependency
 dependency3.from=Plants
 dependency3.to=Field
 dependency3.type=UsesDependency
+<<<<<<< HEAD
 dependency30.from=Rabbit
 dependency30.to=Randomizer
+=======
+dependency30.from=Simulator
+<<<<<<< HEAD
+dependency30.to=Fox
+dependency30.type=UsesDependency
+dependency31.from=Simulator
+dependency31.to=Rabbit
+dependency31.type=UsesDependency
+dependency32.from=Simulator
+dependency32.to=Eagle
+dependency32.type=UsesDependency
+dependency33.from=Simulator
+dependency33.to=Owl
+dependency33.type=UsesDependency
+dependency34.from=Simulator
+dependency34.to=Randomizer
+dependency34.type=UsesDependency
+dependency35.from=Animal
+dependency35.to=Field
+dependency35.type=UsesDependency
+dependency36.from=Animal
+dependency36.to=Location
+dependency36.type=UsesDependency
+dependency37.from=Owl
+dependency37.to=Field
+dependency37.type=UsesDependency
+dependency38.from=Owl
+dependency38.to=Location
+dependency38.type=UsesDependency
+dependency39.from=Owl
+dependency39.to=Randomizer
+dependency39.type=UsesDependency
+dependency4.from=SimulatorView
+dependency4.to=FieldStats
+=======
+dependency30.to=Animal
+>>>>>>> 3ae955d33338bda1d4a9c7d391d166f624c8c52f
 dependency30.type=UsesDependency
 dependency31.from=Simulator
 dependency31.to=Animal
@@ -100,6 +214,7 @@ dependency39.to=Owl
 dependency39.type=UsesDependency
 dependency4.from=Plants
 dependency4.to=Location
+>>>>>>> b4e0d03caad4485878e9f00193ccdff548aab832
 dependency4.type=UsesDependency
 dependency40.from=Simulator
 dependency40.to=Grass
@@ -110,7 +225,40 @@ dependency41.type=UsesDependency
 dependency5.from=SimulatorView
 dependency5.to=FieldStats
 dependency5.type=UsesDependency
+<<<<<<< HEAD
 dependency6.from=SimulatorView
+=======
+dependency6.from=FieldStats
+<<<<<<< HEAD
+dependency6.to=Counter
+dependency6.type=UsesDependency
+dependency7.from=FieldStats
+dependency7.to=Field
+dependency7.type=UsesDependency
+dependency8.from=Field
+dependency8.to=Time
+dependency8.type=UsesDependency
+dependency9.from=Field
+dependency9.to=Location
+dependency9.type=UsesDependency
+editor.fx.0.height=728
+editor.fx.0.width=800
+editor.fx.0.x=351
+editor.fx.0.y=67
+objectbench.height=73
+objectbench.width=901
+package.divider.horizontal=0.6506687647521636
+package.divider.vertical=0.8504672897196262
+package.editor.height=432
+package.editor.width=792
+package.editor.x=232
+package.editor.y=145
+package.frame.height=599
+package.frame.width=925
+package.numDependencies=39
+package.numTargets=16
+=======
+>>>>>>> 3ae955d33338bda1d4a9c7d391d166f624c8c52f
 dependency6.to=Field
 dependency6.type=UsesDependency
 dependency7.from=Fox
@@ -136,8 +284,14 @@ package.editor.x=0
 package.editor.y=0
 package.frame.height=1102
 package.frame.width=1942
+<<<<<<< HEAD
 package.numDependencies=41
 package.numTargets=16
+=======
+package.numDependencies=42
+package.numTargets=17
+>>>>>>> b4e0d03caad4485878e9f00193ccdff548aab832
+>>>>>>> 3ae955d33338bda1d4a9c7d391d166f624c8c52f
 package.showExtends=true
 package.showUses=true
 project.charset=UTF-8
@@ -155,13 +309,36 @@ target1.width=100
 target1.x=230
 target1.y=780
 target10.height=50
+<<<<<<< HEAD
+target10.name=Counter
+=======
 target10.name=Field
+>>>>>>> b4e0d03caad4485878e9f00193ccdff548aab832
 target10.naviview.expanded=true
 target10.showInterface=false
 target10.type=ClassTarget
 target10.width=80
+<<<<<<< HEAD
 target10.x=660
 target10.y=140
+=======
+<<<<<<< HEAD
+target10.x=910
+target10.y=210
+target11.height=50
+target11.name=Animal
+target11.naviview.expanded=true
+target11.showInterface=false
+target11.type=AbstractTarget
+target11.width=80
+target11.x=250
+target11.y=330
+target12.height=50
+target12.name=Actor
+=======
+target10.x=1110
+target10.y=150
+>>>>>>> 3ae955d33338bda1d4a9c7d391d166f624c8c52f
 target11.height=50
 target11.name=Counter
 target11.naviview.expanded=true
@@ -173,9 +350,44 @@ target11.y=170
 target12.height=50
 target12.name=Animal
 target12.naviview.expanded=true
+>>>>>>> b4e0d03caad4485878e9f00193ccdff548aab832
 target12.showInterface=false
 target12.type=AbstractTarget
 target12.width=80
+<<<<<<< HEAD
+target12.x=220
+target12.y=90
+target13.height=30
+target13.name=Predator
+target13.showInterface=false
+target13.type=AbstractTarget
+target13.width=130
+target13.x=610
+target13.y=390
+target14.height=50
+target14.name=Eagle
+target14.showInterface=false
+target14.type=ClassTarget
+target14.width=80
+target14.x=200
+target14.y=530
+target15.height=50
+target15.name=Simulator
+target15.naviview.expanded=true
+target15.showInterface=false
+target15.type=ClassTarget
+target15.width=90
+target15.x=80
+target15.y=110
+target16.height=50
+target16.name=Location
+target16.naviview.expanded=true
+target16.showInterface=false
+target16.type=ClassTarget
+target16.width=80
+target16.x=480
+target16.y=260
+=======
 target12.x=330
 target12.y=480
 target13.height=50
@@ -205,9 +417,24 @@ target16.name=Location
 target16.naviview.expanded=true
 target16.showInterface=false
 target16.type=ClassTarget
+<<<<<<< HEAD
 target16.width=80
 target16.x=790
 target16.y=220
+=======
+target16.width=90
+target16.x=80
+target16.y=110
+target17.height=50
+target17.name=Location
+target17.naviview.expanded=true
+target17.showInterface=false
+target17.type=ClassTarget
+target17.width=80
+target17.x=1240
+target17.y=230
+>>>>>>> b4e0d03caad4485878e9f00193ccdff548aab832
+>>>>>>> 3ae955d33338bda1d4a9c7d391d166f624c8c52f
 target2.height=50
 target2.name=Owl
 target2.showInterface=false
@@ -233,7 +460,49 @@ target4.y=80
 target5.height=50
 target5.name=Grass
 target5.showInterface=false
+<<<<<<< HEAD
 target5.type=ClassTarget
+=======
+<<<<<<< HEAD
+target5.type=ClassTarget
+target5.width=80
+target5.x=140
+target5.y=330
+target6.height=50
+target6.name=SimulatorView
+target6.naviview.expanded=true
+target6.showInterface=false
+target6.type=ClassTarget
+target6.width=120
+target6.x=540
+target6.y=40
+target7.height=50
+target7.name=Fox
+target7.naviview.expanded=true
+target7.showInterface=false
+target7.type=ClassTarget
+target7.width=80
+target7.x=330
+target7.y=530
+target8.height=50
+target8.name=FieldStats
+target8.naviview.expanded=true
+target8.showInterface=false
+target8.type=ClassTarget
+target8.width=90
+target8.x=660
+target8.y=120
+target9.height=50
+target9.name=Field
+target9.naviview.expanded=true
+target9.showInterface=false
+target9.type=ClassTarget
+target9.width=80
+target9.x=350
+target9.y=180
+=======
+target5.type=AbstractTarget
+>>>>>>> 3ae955d33338bda1d4a9c7d391d166f624c8c52f
 target5.width=80
 target5.x=640
 target5.y=680
@@ -266,5 +535,11 @@ target9.naviview.expanded=true
 target9.showInterface=false
 target9.type=ClassTarget
 target9.width=90
+<<<<<<< HEAD
 target9.x=970
 target9.y=80
+=======
+target9.x=1420
+target9.y=90
+>>>>>>> b4e0d03caad4485878e9f00193ccdff548aab832
+>>>>>>> 3ae955d33338bda1d4a9c7d391d166f624c8c52f
