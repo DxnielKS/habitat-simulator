@@ -19,7 +19,7 @@ public class Weather
     public Weather()
     {
         // initialise instance variables
-        randomGenerator = new Random()
+        randomGenerator = new Random();
         weather_list = new ArrayList<String>();
         weather_list.add("Clear");
         weather_list.add("Rain");
@@ -33,7 +33,7 @@ public class Weather
      */
     public void change_weather()
     {
-        int new_weather_index = randomGenerator.nextInt(4)
+        int new_weather_index = randomGenerator.nextInt(4);
         if (weather_list.get(new_weather_index) == "Clear")
         {
             clear = true;
@@ -57,7 +57,7 @@ public class Weather
     }
 
     public String get_weather()
-    {//clear, rain, storm, cloudy
+    {    //clear, rain, storm, cloudy
         if (clear)
         {
             return "Clear";
@@ -66,15 +66,13 @@ public class Weather
         {
             return "Rain";
         }
-        else if (Storm)
+        else if (storm)
         {
             return "Storm";
         }
-        else if (Cloudy)
+        else if (cloudy)
         {
             return "Cloudy";
-        }
-        }
         }
         return null;
     }
