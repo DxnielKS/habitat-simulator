@@ -19,9 +19,9 @@ public class Simulator
     // The default depth of the grid.
     private static final int DEFAULT_DEPTH = 80;
     // The probability that a fox will be created in any given grid position.
-    private static final double FOX_CREATION_PROBABILITY = 0.012;
+    private static final double SQUIREL_CREATION_PROBABILITY = 0.013;
     // The probability that a rabbit will be created in any given grid position.
-    private static final double RABBIT_CREATION_PROBABILITY = 0.2;    
+    private static final double WORM_CREATION_PROBABILITY = 0.2;    
 
     private static final double EAGLE_CREATION_PROBABILITY = 0.13; 
 
@@ -69,8 +69,8 @@ public class Simulator
 
         // Create a view of the state of each location in the field.
         view = new SimulatorView(depth, width);
-        view.setColor(Rabbit.class, Color.ORANGE);
-        view.setColor(Fox.class, Color.BLUE);
+        view.setColor(Worm.class, Color.ORANGE);
+        view.setColor(Squirel.class, Color.BLUE);
         view.setColor(Eagle.class,Color.RED);
 
         view.setColor(Owl.class,Color.MAGENTA);
@@ -182,15 +182,15 @@ public class Simulator
         field.clear();
         for(int row = 0; row < field.getDepth(); row++) {
             for(int col = 0; col < field.getWidth(); col++) {
-                if(rand.nextDouble() <= FOX_CREATION_PROBABILITY) {
+                if(rand.nextDouble() <= SQUIREL_CREATION_PROBABILITY) {
                     Location location = new Location(row, col);
-                    Fox fox = new Fox(true, field, location);
-                    animals.add(fox);
+                    Squirel squirel = new Squirel(true, field, location);
+                    animals.add(squirel);
                 }
-                else if(rand.nextDouble() <= RABBIT_CREATION_PROBABILITY) {
+                else if(rand.nextDouble() <= WORM_CREATION_PROBABILITY) {
                     Location location = new Location(row, col);
-                    Rabbit rabbit = new Rabbit(true, field, location);
-                    animals.add(rabbit); 
+                    Worm worm = new Worm(true, field, location);
+                    animals.add(worm); 
                 }
                 else if(rand.nextDouble() <= EAGLE_CREATION_PROBABILITY)
                 {

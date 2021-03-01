@@ -4,7 +4,7 @@ import java.util.Random;
 
 /**
  * A simple model of a fox.
- * Foxes age, move, eat rabbits, and die.
+ * Foxes age, move, eat worms, and die.
  * 
  * @author David J. Barnes and Michael Kölling
  * @version 2016.02.29 (2)
@@ -20,18 +20,18 @@ public class Eagle extends Animal
     private static final double BREEDING_PROBABILITY = 0.6;
     // The maximum number of births.
     private static final int MAX_LITTER_SIZE = 2;
-    // The food value of a single rabbit. In effect, this is the
+    // The food value of a single worm. In effect, this is the
     // number of steps a fox can go before it has to eat again.
-    private static final int FOX_FOOD_VALUE = 5 ;
+    private static final int SQUIREL_FOOD_VALUE = 5 ;
     
-    private static final int RABBIT_FOOD_VALUE = 3;
+    private static final int WORM_FOOD_VALUE = 3;
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom(); 
 
     
     // Individual characteristics (instance fields).
     // The fox's age.
-    // The fox's food level, which is increased by eating rabbits.
+    // The fox's food level, which is increased by eating worms.
     
 
  
@@ -49,18 +49,18 @@ public class Eagle extends Animal
         setMaxAge(50);
         if(randomAge) {
             setAge(rand.nextInt(getMaxAge()));
-            setFoodLevel(rand.nextInt(FOX_FOOD_VALUE));
+            setFoodLevel(rand.nextInt(SQUIREL_FOOD_VALUE));
         }
         else {
             setAge(0);
-            setFoodLevel(FOX_FOOD_VALUE);
+            setFoodLevel(SQUIREL_FOOD_VALUE);
         }
         setGender();
     }
     
     /**
      * This is what the fox does most of the time: it hunts for
-     * rabbits. In the process, it might breed, die of hunger,
+     * worms. In the process, it might breed, die of hunger,
      * or die of old age.
      * @param field The field currently occupied.
      * @param newFoxes A list to return newly born foxes.
@@ -91,8 +91,8 @@ public class Eagle extends Animal
 
     
     /**
-     * Look for rabbits adjacent to the current location.
-     * Only the first live rabbit is eaten.
+     * Look for worms adjacent to the current location.
+     * Only the first live worm is eaten.
      * @return Where food was found, or null if it wasn't.
      */
     private Location findFood()
@@ -103,12 +103,12 @@ public class Eagle extends Animal
         while(it.hasNext()) {
             Location where = it.next();
             Object animal = field.getObjectAt(where);
-            if(animal instanceof Fox) {
-                Fox fox = (Fox) animal;
-                if(fox.isAlive()) { 
-                    if (fox.getAge()<7){
-                        fox.setDead();
-                        setFoodLevel( getFoodLevel() + FOX_FOOD_VALUE);
+            if(animal instanceof Squirel) {
+                Squirel squirel = (Squirel) animal;
+                if(squirel.isAlive()) { 
+                    if (squirel.getAge()<7){
+                        squirel.setDead();
+                        setFoodLevel( getFoodLevel() + SQUIREL_FOOD_VALUE);
                         if(getFoodLevel() > 10)
                         {
                             setFoodLevel(10);
@@ -117,13 +117,13 @@ public class Eagle extends Animal
                 }
                 }
             }
-            else if(animal instanceof Rabbit)
+            else if(animal instanceof Worm)
             {
-                Rabbit rabbit = (Rabbit) animal;
-                if (rabbit.isAlive())
+                Worm worm = (Worm) animal;
+                if (worm.isAlive())
                 {
-                    rabbit.setDead();
-                    setFoodLevel( getFoodLevel() + RABBIT_FOOD_VALUE);
+                    worm.setDead();
+                    setFoodLevel( getFoodLevel() + WORM_FOOD_VALUE);
                     if(getFoodLevel()> 10)
                     {
                         setFoodLevel(10);

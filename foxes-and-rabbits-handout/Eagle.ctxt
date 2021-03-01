@@ -1,15 +1,15 @@
 #BlueJ class context
 comment0.target=Eagle
-comment0.text=\r\n\ A\ simple\ model\ of\ a\ fox.\r\n\ Foxes\ age,\ move,\ eat\ rabbits,\ and\ die.\r\n\ \r\n\ @author\ David\ J.\ Barnes\ and\ Michael\ K\u00F6lling\r\n\ @version\ 2016.02.29\ (2)\r\n
+comment0.text=\r\n\ A\ simple\ model\ of\ a\ fox.\r\n\ Foxes\ age,\ move,\ eat\ worms,\ and\ die.\r\n\ \r\n\ @author\ David\ J.\ Barnes\ and\ Michael\ K\u00F6lling\r\n\ @version\ 2016.02.29\ (2)\r\n
 comment1.params=randomAge\ field\ location
 comment1.target=Eagle(boolean,\ Field,\ Location)
 comment1.text=\r\n\ Create\ a\ fox.\ A\ fox\ can\ be\ created\ as\ a\ new\ born\ (age\ zero\r\n\ and\ not\ hungry)\ or\ with\ a\ random\ age\ and\ food\ level.\r\n\ \r\n\ @param\ randomAge\ If\ true,\ the\ fox\ will\ have\ random\ age\ and\ hunger\ level.\r\n\ @param\ field\ The\ field\ currently\ occupied.\r\n\ @param\ location\ The\ location\ within\ the\ field.\r\n
 comment2.params=newEagles
 comment2.target=void\ act(java.util.List)
-comment2.text=\r\n\ This\ is\ what\ the\ fox\ does\ most\ of\ the\ time\:\ it\ hunts\ for\r\n\ rabbits.\ In\ the\ process,\ it\ might\ breed,\ die\ of\ hunger,\r\n\ or\ die\ of\ old\ age.\r\n\ @param\ field\ The\ field\ currently\ occupied.\r\n\ @param\ newFoxes\ A\ list\ to\ return\ newly\ born\ foxes.\r\n
+comment2.text=\r\n\ This\ is\ what\ the\ fox\ does\ most\ of\ the\ time\:\ it\ hunts\ for\r\n\ worms.\ In\ the\ process,\ it\ might\ breed,\ die\ of\ hunger,\r\n\ or\ die\ of\ old\ age.\r\n\ @param\ field\ The\ field\ currently\ occupied.\r\n\ @param\ newFoxes\ A\ list\ to\ return\ newly\ born\ foxes.\r\n
 comment3.params=
 comment3.target=Location\ findFood()
-comment3.text=\r\n\ Look\ for\ rabbits\ adjacent\ to\ the\ current\ location.\r\n\ Only\ the\ first\ live\ rabbit\ is\ eaten.\r\n\ @return\ Where\ food\ was\ found,\ or\ null\ if\ it\ wasn't.\r\n
+comment3.text=\r\n\ Look\ for\ worms\ adjacent\ to\ the\ current\ location.\r\n\ Only\ the\ first\ live\ worm\ is\ eaten.\r\n\ @return\ Where\ food\ was\ found,\ or\ null\ if\ it\ wasn't.\r\n
 comment4.params=newEagles
 comment4.target=void\ giveBirth(java.util.List)
 comment4.text=\r\n\ Check\ whether\ or\ not\ this\ fox\ is\ to\ give\ birth\ at\ this\ step.\r\n\ New\ births\ will\ be\ made\ into\ free\ adjacent\ locations.\r\n\ @param\ newFoxes\ A\ list\ to\ return\ newly\ born\ foxes.\r\n
