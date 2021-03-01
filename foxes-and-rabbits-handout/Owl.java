@@ -17,7 +17,7 @@ public class Owl extends Animal
     // The age at which an owl can start to breed.
     private static final int BREEDING_AGE = 7;
     // The likelihood of an owl breeding.
-    private static final double BREEDING_PROBABILITY = 0.054;
+    private static final double BREEDING_PROBABILITY = 0.1;
     // The maximum number of births.
     private static final int MAX_LITTER_SIZE = 13;
     // number of steps an owl can go before it has to eat again.

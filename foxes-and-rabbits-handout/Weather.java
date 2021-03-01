@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.HashMap;
 /**
  * Write a description of class Weather here.
  *
@@ -13,6 +14,7 @@ public class Weather
     private Random randomGenerator;
     private boolean clear, rain, storm, cloudy;
     private ArrayList<String> weather_list;
+    //private HashMap<> weather_map;
     /**
      * Constructor for objects of class Weather. The weather defaults to clear weather.
      */
@@ -25,8 +27,7 @@ public class Weather
         weather_list.add("Rain");
         weather_list.add("Storm");
         weather_list.add("Cloudy");
-        rain = storm = cloudy = false;
-        clear = true;
+        change_weather();
     }
     /**
      * Method to change the weather randomly in the simulator
@@ -38,39 +39,43 @@ public class Weather
         {
             clear = true;
             rain = storm = cloudy = false;
+            System.out.println("Weather changed to clear");
         }
         else if(weather_list.get(new_weather_index) == "Rain")
         {
             rain = true;
             clear = storm = cloudy = false;
+            System.out.println("Weather changed to rain");
         }
         else if (weather_list.get(new_weather_index) == "Storm")
         {
             storm = true;
             clear = rain = cloudy = false;
+            System.out.println("Weather changed to storm");
         }
         else if (weather_list.get(new_weather_index) == "Cloudy")
         {
             cloudy = true;
             rain = storm = clear = false;
+            System.out.println("Weather changed to cloudy");
         }
     }
 
     public String get_weather()
     {    //clear, rain, storm, cloudy
-        if (clear)
+        if (this.clear)
         {
             return "Clear";
         }
-        else if (rain)
+        else if (this.rain)
         {
             return "Rain";
         }
-        else if (storm)
+        else if (this.storm)
         {
             return "Storm";
         }
-        else if (cloudy)
+        else if (this.cloudy)
         {
             return "Cloudy";
         }

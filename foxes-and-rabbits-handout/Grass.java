@@ -10,7 +10,7 @@ public class Grass extends Plants
 {
     // instance variables - replace the example below with your own
     private static final Random rand = Randomizer.getRandom();
-
+    private Weather weather_machine;
     /**
      * Constructor for objects of class Grass
      */
@@ -22,7 +22,6 @@ public class Grass extends Plants
         setFertility(0.47);
         
     }
-
     /**
      * An example of a method - replace this comment with your own
      *

@@ -18,6 +18,7 @@ public abstract class Plants extends Actor
         super(field,location);
     }
     
+    
     public abstract void act(List<Plants> newPlants);
     public boolean getNight()
      {
