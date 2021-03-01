@@ -21,6 +21,10 @@ public abstract class Animal extends Actor
 
     private boolean isMale;
     
+    private boolean isInfected; // a flag to indicate whether an animal is ill or not
+    
+    private static final double infection_rate = 0.01; // rate of infection
+    
     
     /**
      * Create a new animal at location in field.
@@ -31,6 +35,10 @@ public abstract class Animal extends Actor
     public Animal(Field field, Location location)
     {
         super(field,location);
+        if (random.nextDouble() >= infection_rate)
+        {
+            isInfected = true;
+        }
     }
     /**
      * Make this animal act - that is: make it do

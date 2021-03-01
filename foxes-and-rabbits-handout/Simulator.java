@@ -15,6 +15,9 @@ public class Simulator
 {
     // Constants representing configuration information for the simulation.
     // The default width for the grid.
+    
+    // a weather machine to change weather
+    
     private static final int DEFAULT_WIDTH = 120;
     // The default depth of the grid.
     private static final int DEFAULT_DEPTH = 80;
@@ -29,6 +32,7 @@ public class Simulator
     
     private static final double GRASS_CREATION_PROBABILITY = 0.06;
 
+    private Weather weather_machine;
     // List of animals in the field.
     private List<Animal> animals;
     
@@ -62,7 +66,7 @@ public class Simulator
             depth = DEFAULT_DEPTH;
             width = DEFAULT_WIDTH;
         }
-        
+        weather_machine = new Weather();
         animals = new ArrayList<>();
         field = new Field(depth, width);
         plants = new ArrayList<>();
@@ -72,13 +76,9 @@ public class Simulator
         view.setColor(Worm.class, Color.ORANGE);
         view.setColor(Squirel.class, Color.BLUE);
         view.setColor(Eagle.class,Color.RED);
-
         view.setColor(Owl.class,Color.MAGENTA);
-
         view.setColor(Grass.class,Color.GREEN);
 
-
-        
         // Setup a valid starting point.
         reset();
     }
@@ -101,7 +101,7 @@ public class Simulator
     {
         for(int step = 1; step <= numSteps && view.isViable(field); step++) {
             simulateOneStep();
-            // delay(60);   // uncomment this to run more slowly
+            delay(60);   // uncomment this to run more slowly
         }
     }
     
@@ -113,6 +113,10 @@ public class Simulator
     public void simulateOneStep()
     {
         step++;
+        if (step % 25 == 0) // every 25 steps
+        {
+            weather_machine.change_weather(); // change the weather
+        }
         field.getFieldTime().setTimeOfDay();
         
         setBackgroundColor();
@@ -124,7 +128,7 @@ public class Simulator
         
         for(Iterator<Plants> it = plants.iterator(); it.hasNext(); ) {
             Plants plants = it.next();
-            if (field.getFieldTime().getNight() == false)
+            if (field.getFieldTime().getNight() == false && weather_machine.get_weather() == "Rain")
                 {
                     plants.act(newPlants);
             }
@@ -154,6 +158,7 @@ public class Simulator
         animals.addAll(newAnimals);
         plants.addAll(newPlants);
         view.setInfoText(field.getFieldTime().getStringTime());
+        view.setInfoText(weather_machine.get_weather());
         view.showStatus(step, field);
     }
         
@@ -174,7 +179,7 @@ public class Simulator
     }
     
     /**
-     * Randomly populate the field with foxes and rabbits.
+     * Randomly populate the field with wildlife.
      */
     private void populate()
     {

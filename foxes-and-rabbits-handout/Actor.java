@@ -19,11 +19,9 @@ public abstract class Actor
 
     private boolean isNocturnal;
     
-
     private int age;
     
     private int maxAge;
-
 
     private Random random = new Random();
 
@@ -37,6 +35,7 @@ public abstract class Actor
         this.field = field;
         setLocation(location);
     }
+    // returns current weather in the simulation
     protected boolean getNocturnal()
     {
         return isNocturnal;
