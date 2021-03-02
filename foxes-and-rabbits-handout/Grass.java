@@ -19,7 +19,7 @@ public class Grass extends Plants
         super(field,location);
         setMaxAge(5);
         setAge(0);
-        setFertility(0.27);
+        setFertility(0.15);
         
     }
     /**

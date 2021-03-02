@@ -1,12 +1,16 @@
 #BlueJ class context
 comment0.target=Weather
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Weather\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ A\ class\ that\ stores\ the\ current\ weather\ states\ and\ methods\ to\ change\ weather.\r\n\r\n\ @author\ Daniel\ Saisani\r\n\ @version\ 02/03/2021\r\n
 comment1.params=
 comment1.target=Weather()
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Weather.\ The\ weather\ defaults\ to\ clear\ weather.\r\n
 comment2.params=
-comment2.target=void\ change_weather()
-comment2.text=\r\n\ Method\ to\ change\ the\ weather\ randomly\ in\ the\ simulator\r\n
+comment2.target=void\ fill_weather_map()
+comment2.text=\r\n\ initialises\ the\ map\ of\ weather\ states\r\n
 comment3.params=
-comment3.target=java.lang.String\ get_weather()
-numComments=4
+comment3.target=void\ change_weather()
+comment3.text=\r\n\ A\ method\ to\ change\ the\ weather\ randomly\r\n
+comment4.params=
+comment4.target=java.lang.String\ get_weather()
+comment4.text=\r\n\ A\ method\ to\ return\ the\ current\ weather\ in\ the\ simulator\r\n
+numComments=5

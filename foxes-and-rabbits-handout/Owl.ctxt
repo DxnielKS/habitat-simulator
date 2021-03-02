@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Owl
-comment0.text=\r\n\ A\ simple\ model\ of\ a\ owl.\r\n\ owles\ age,\ move,\ eat\ rabbits,\ and\ die.\r\n\ \r\n\ @author\ Daniel\ Saisani\r\n\ @version\ 18/02/2021\r\n
+comment0.text=\r\n\ A\ simple\ model\ of\ a\ owl.\r\n\ owles\ age,\ move,\ eat\ worms,\ and\ die.\r\n\ \r\n\ @author\ Daniel\ Saisani\r\n\ @version\ 18/02/2021\r\n
 comment1.params=randomAge\ field\ location
 comment1.target=Owl(boolean,\ Field,\ Location)
 comment1.text=\r\n\ Create\ a\ owl.\ A\ owl\ can\ be\ created\ as\ a\ new\ born\ (age\ zero\r\n\ and\ not\ hungry)\ or\ with\ a\ random\ age\ and\ food\ level.\r\n\ \r\n\ @param\ randomAge\ If\ true,\ the\ owl\ will\ have\ random\ age\ and\ hunger\ level.\r\n\ @param\ field\ The\ field\ currently\ occupied.\r\n\ @param\ location\ The\ location\ within\ the\ field.\r\n

@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Eagle
-comment0.text=\r\n\ A\ simple\ model\ of\ a\ fox.\r\n\ Foxes\ age,\ move,\ eat\ worms,\ and\ die.\r\n\ \r\n\ @author\ David\ J.\ Barnes\ and\ Michael\ K\u00F6lling\r\n\ @version\ 2016.02.29\ (2)\r\n
+comment0.text=\r\n\ A\ simple\ model\ of\ a\ squirrel.\r\n\ squirrels\ age,\ move,\ eat,\ and\ die.\r\n\ \r\n\ @author\ David\ J.\ Barnes\ and\ Michael\ K\u00F6lling\r\n\ @version\ 2016.02.29\ (2)\r\n
 comment1.params=randomAge\ field\ location
 comment1.target=Eagle(boolean,\ Field,\ Location)
 comment1.text=\r\n\ Create\ a\ fox.\ A\ fox\ can\ be\ created\ as\ a\ new\ born\ (age\ zero\r\n\ and\ not\ hungry)\ or\ with\ a\ random\ age\ and\ food\ level.\r\n\ \r\n\ @param\ randomAge\ If\ true,\ the\ fox\ will\ have\ random\ age\ and\ hunger\ level.\r\n\ @param\ field\ The\ field\ currently\ occupied.\r\n\ @param\ location\ The\ location\ within\ the\ field.\r\n
