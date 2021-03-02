@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=Worm
+comment0.text=\r\n\ A\ simple\ model\ of\ a\ worm.\r\n\ worms\ age,\ move,\ breed,\ and\ die.\r\n\ \r\n\ @author\ David\ J.\ Barnes\ and\ Michael\ K\u00F6lling\r\n\ @version\ 2016.02.29\ (2)\r\n
+comment1.params=randomAge\ field\ location
+comment1.target=Worm(boolean,\ Field,\ Location)
+comment1.text=\r\n\ Create\ a\ new\ worm.\ A\ worm\ may\ be\ created\ with\ age\r\n\ zero\ (a\ new\ born)\ or\ with\ a\ random\ age.\r\n\ \r\n\ @param\ randomAge\ If\ true,\ the\ worm\ will\ have\ a\ random\ age.\r\n\ @param\ field\ The\ field\ currently\ occupied.\r\n\ @param\ location\ The\ location\ within\ the\ field.\r\n
+comment2.params=newworms
+comment2.target=void\ act(java.util.List)
+comment2.text=\r\n\ This\ is\ what\ the\ worm\ does\ most\ of\ the\ time\ -\ it\ runs\ \r\n\ around.\ Sometimes\ it\ will\ breed\ or\ die\ of\ old\ age.\r\n\ @param\ newworms\ A\ list\ to\ return\ newly\ born\ worms.\r\n
+comment3.params=newworms
+comment3.target=void\ giveBirth(java.util.List)
+comment3.text=\r\n\ Check\ whether\ or\ not\ this\ worm\ is\ to\ give\ birth\ at\ this\ step.\r\n\ New\ births\ will\ be\ made\ into\ free\ adjacent\ locations.\r\n\ @param\ newworms\ A\ list\ to\ return\ newly\ born\ worms.\r\n
+comment4.params=
+comment4.target=int\ breed()
+comment4.text=\r\n\ Generate\ a\ number\ representing\ the\ number\ of\ births,\r\n\ if\ it\ can\ breed.\r\n\ @return\ The\ number\ of\ births\ (may\ be\ zero).\r\n
+comment5.params=newworms
+comment5.target=void\ canBreed(java.util.List)
+comment5.text=\r\n\ A\ worm\ can\ breed\ if\ it\ has\ reached\ the\ breeding\ age.\r\n\ @return\ true\ if\ the\ worm\ can\ breed,\ false\ otherwise.\r\n
+comment6.params=
+comment6.target=Location\ findFood()
+numComments=7

@@ -3,48 +3,48 @@ import java.util.Iterator;
 import java.util.Random;
 
 /**
- * A simple model of a fox.
- * Foxes age, move, eat rabbits, and die.
+ * A simple model of a squirel.
+ * squireles age, move, eat WORMs, and die.
  * 
  * @author David J. Barnes and Michael Kölling
  * @version 2016.02.29 (2)
  */
-public class Fox extends Animal
+public class Squirel extends Animal
 {
-    // Characteristics shared by all foxes (class variables).
+    // Characteristics shared by all squireles (class variables).
     
-    // The age at which a fox can start to breed.
+    // The age at which a squirel can start to breed.
     private static final int BREEDING_AGE = 5;
-    // The age to which a fox can live.
-    // The likelihood of a fox breeding.
-    private static final double BREEDING_PROBABILITY = 0.5;
+    // The age to which a squirel can live.
+    // The likelihood of a squirel breeding.
+    private static final double BREEDING_PROBABILITY = 0.40;
     // The maximum number of births.
-    private static final int MAX_LITTER_SIZE = 5;
-    // The food value of a single rabbit. In effect, this is the
-    // number of steps a fox can go before it has to eat again.
-    private static final int RABBIT_FOOD_VALUE = 9;
+    private static final int MAX_LITTER_SIZE = 3;
+    // The food value of a single WORM. In effect, this is the
+    // number of steps a squirel can go before it has to eat again.
+    private static final int WORM_FOOD_VALUE = 5;
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom();
     // Individual characteristics (instance fields).
-    // The fox's age.
-    // The fox's food level, which is increased by eating rabbits.
+    // The squirel's age.
+    // The squirel's food level, which is increased by eating WORMs.
 
  
     /**
-     * Create a fox. A fox can be created as a new born (age zero
+     * Create a squirel. A squirel can be created as a new born (age zero
      * and not hungry) or with a random age and food level.
      * 
-     * @param randomAge If true, the fox will have random age and hunger level.
+     * @param randomAge If true, the squirel will have random age and hunger level.
      * @param field The field currently occupied.
      * @param location The location within the field.
      */
-    public Fox(boolean randomAge, Field field, Location location)
+    public Squirel(boolean randomAge, Field field, Location location)
     {
         super(field, location);
         setMaxAge(70);
         if(randomAge) {
             setAge(rand.nextInt(getMaxAge()));
-            setFoodLevel(rand.nextInt(RABBIT_FOOD_VALUE));
+            setFoodLevel(rand.nextInt(WORM_FOOD_VALUE));
         }
         else {
             setAge(0);
@@ -54,19 +54,19 @@ public class Fox extends Animal
     }
     
     /**
-     * This is what the fox does most of the time: it hunts for
-     * rabbits. In the process, it might breed, die of hunger,
+     * This is what the squirel does most of the time: it hunts for
+     * WORMs. In the process, it might breed, die of hunger,
      * or die of old age.
      * @param field The field currently occupied.
-     * @param newFoxes A list to return newly born foxes.
+     * @param newsquireles A list to return newly born squireles.
      */
-    public void act(List<Animal> newFoxes)
+    public void act(List<Animal> newsquireles)
     {
         incrementAge();
         incrementHunger();
         deathByAge();
         if(isAlive()) {
-            canBreed(newFoxes);            
+            canBreed(newsquireles);            
             // Move towards a source of food if found.
             Location newLocation = findFood();
             if(newLocation == null) { 
@@ -85,8 +85,8 @@ public class Fox extends Animal
     }
     
     /**
-     * Look for rabbits adjacent to the current location.
-     * Only the first live rabbit is eaten.
+     * Look for WORMs adjacent to the current location.
+     * Only the first live WORM is eaten.
      * @return Where food was found, or null if it wasn't.
      */
     private Location findFood()
@@ -97,11 +97,11 @@ public class Fox extends Animal
         while(it.hasNext()) {
             Location where = it.next();
             Object animal = field.getObjectAt(where);
-            if(animal instanceof Rabbit) {
-                Rabbit rabbit = (Rabbit) animal;
-                if(rabbit.isAlive()) { 
-                    rabbit.setDead();
-                    setFoodLevel(getFoodLevel()+RABBIT_FOOD_VALUE);
+            if(animal instanceof Worm) {
+                Worm worm = (Worm) animal;
+                if(worm.isAlive()) { 
+                    worm.setDead();
+                    setFoodLevel(getFoodLevel()+WORM_FOOD_VALUE);
                     return where;
                 }
             }
@@ -110,21 +110,21 @@ public class Fox extends Animal
     }
     
     /**
-     * Check whether or not this fox is to give birth at this step.
+     * Check whether or not this squirel is to give birth at this step.
      * New births will be made into free adjacent locations.
-     * @param newFoxes A list to return newly born foxes.
+     * @param newsquireles A list to return newly born squireles.
      */
-    private void giveBirth(List<Animal> newFoxes)
+    private void giveBirth(List<Animal> newsquireles)
     {
-        // New foxes are born into adjacent locations.
+        // New squireles are born into adjacent locations.
         // Get a list of adjacent free locations.
         Field field = getField();
         List<Location> free = field.getFreeAdjacentLocations(getLocation());
         int births = breed();
         for(int b = 0; b < births && free.size() > 0; b++) {
             Location loc = free.remove(0);
-            Fox young = new Fox(false, field, loc);
-            newFoxes.add(young);
+            Squirel young = new Squirel(false, field, loc);
+            newsquireles.add(young);
         }
     }
         
@@ -143,9 +143,9 @@ public class Fox extends Animal
     }
 
     /**
-     * A fox can breed if it has reached the breeding age.
+     * A squirel can breed if it has reached the breeding age.
      */
-    private void canBreed(List<Animal> newFoxes)
+    private void canBreed(List<Animal> newsquireles)
     {
         Field field = getField();
         List<Location> adjacent = field.adjacentLocations(getLocation());
@@ -153,10 +153,10 @@ public class Fox extends Animal
         while(it.hasNext()) {
             Location where = it.next();
             Object animal = field.getObjectAt(where);
-            if(animal instanceof Fox) {
-                Fox fox = (Fox) animal;
-                 if(fox.isAlive() && (getGender() != fox.getGender()) && fox.getAge() >= BREEDING_AGE && getAge() >= BREEDING_AGE) { 
-                    giveBirth(newFoxes);
+            if(animal instanceof Squirel) {
+                Squirel squirel = (Squirel) animal;
+                 if(squirel.isAlive() && (getGender() != squirel.getGender()) && squirel.getAge() >= BREEDING_AGE && getAge() >= BREEDING_AGE) { 
+                    giveBirth(newsquireles);
                  }
             }
         }
