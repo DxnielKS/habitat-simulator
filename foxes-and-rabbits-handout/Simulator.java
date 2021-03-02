@@ -128,15 +128,17 @@ public class Simulator
         
         for(Iterator<Plants> it = plants.iterator(); it.hasNext(); ) {
             Plants plants = it.next();
-            if (field.getFieldTime().getNight() == false && weather_machine.get_weather() == "Rain")
+            if (field.getFieldTime().getNight() == false)
                 {
                     plants.act(newPlants);
+  
             }
             
             if(! plants.isAlive()) {
                 it.remove();
             }
-        }   
+        }  
+        
       
         for(Iterator<Animal> it = animals.iterator(); it.hasNext(); ) {
             Animal animal = it.next();
@@ -157,8 +159,8 @@ public class Simulator
         // Add the newly born foxes and rabbits to the main lists.
         animals.addAll(newAnimals);
         plants.addAll(newPlants);
-        view.setInfoText(field.getFieldTime().getStringTime());
-        view.setInfoText(weather_machine.get_weather());
+        plantsInRain();
+        view.setInfoText(field.getFieldTime().getStringTime()+" and the weather is: "+weather_machine.get_weather());
         view.showStatus(step, field);
     }
         
@@ -223,6 +225,24 @@ public class Simulator
         }
     }
     
+    private void populatePlants()
+    {
+            Random rand = Randomizer.getRandom();
+            for(int row = 0; row < field.getDepth(); row++) {
+                for(int col = 0; col < field.getWidth(); col++) {
+                     if(rand.nextDouble() <= GRASS_CREATION_PROBABILITY)
+                      {
+                          Location location = new Location(row, col);
+                          if (field.getObjectAt(location)==null)
+                          {
+                              Grass grass = new Grass(field, location);
+                              plants.add(grass);
+                            }
+                }
+            }
+    }
+    }
+    
     /**
      * Pause for a given time.
      * @param millisec  The time to pause for, in milliseconds
@@ -251,5 +271,14 @@ public class Simulator
         {
             view.setEmptyColor(Color.gray);
         }
+    }
+    
+    private void plantsInRain()
+    {
+            if(field.getFieldTime().getNight() == false && weather_machine.get_weather() == "Rain")
+            {
+                System.out.println("This has beem called");
+                populatePlants();
+            }
     }
 }
