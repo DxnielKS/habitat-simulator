@@ -15,12 +15,11 @@ public abstract class Actor
     private Field field;
     // The animal's position in the field.
     private Location location;
-    
-
+    // whether the actor is nocturnal or not
     private boolean isNocturnal;
-    
+    // the age of the actor
     private int age;
-    
+    // maximum age of actor
     private int maxAge;
 
     private Random random = new Random();

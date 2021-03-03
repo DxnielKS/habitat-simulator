@@ -22,7 +22,7 @@ public class Eagle extends Animal
     private static final int MAX_LITTER_SIZE = 2;
     // The food value of a single worm. In effect, this is the
     // number of steps a fox can go before it has to eat again.
-    private static final int SQUIREL_FOOD_VALUE = 5 ;
+    private static final int SQUIRREL_FOOD_VALUE = 5 ;
     
     private static final int WORM_FOOD_VALUE = 3;
     // A shared random number generator to control breeding.
@@ -56,11 +56,11 @@ public class Eagle extends Animal
         }
         if(randomAge) {
             setAge(rand.nextInt(getMaxAge()));
-            setFoodLevel(rand.nextInt(SQUIREL_FOOD_VALUE));
+            setFoodLevel(rand.nextInt(SQUIRREL_FOOD_VALUE));
         }
         else {
             setAge(0);
-            setFoodLevel(SQUIREL_FOOD_VALUE);
+            setFoodLevel(SQUIRREL_FOOD_VALUE);
         }
         setGender();
     }
@@ -111,11 +111,11 @@ public class Eagle extends Animal
             Location where = it.next();
             Object animal = field.getObjectAt(where);
             if(animal instanceof Squirrel) {
-                Squirrel squirel = (Squirrel) animal;
-                if(squirel.isAlive()) { 
-                    if (squirel.getAge()<7){
-                        squirel.setDead();
-                        setFoodLevel( getFoodLevel() + SQUIREL_FOOD_VALUE);
+                Squirrel squirrel = (Squirrel) animal;
+                if(squirrel.isAlive()) { 
+                    if (squirrel.getAge()<7){
+                        squirrel.setDead();
+                        setFoodLevel( getFoodLevel() + SQUIRREL_FOOD_VALUE);
                         if(getFoodLevel() > 10)
                         {
                             setFoodLevel(10);
