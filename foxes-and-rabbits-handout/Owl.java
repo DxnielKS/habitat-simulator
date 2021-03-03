@@ -21,7 +21,7 @@ public class Owl extends Animal
 
     // Individual characteristics (instance fields).
     // The owl's age.
-    // The owl's food level, which is increased by eating rabbits.
+    // The owl's food level, which is increased by eating owls.
     /**
      * Create a owl. A owl can be created as a new born (age zero
      * and not hungry) or with a random age and food level.
@@ -49,7 +49,7 @@ public class Owl extends Animal
     
     /**
      * This is what the owl does most of the time: it hunts for
-     * rabbits. In the process, it might breed, die of hunger,
+     * owls. In the process, it might breed, die of hunger,
      * or die of old age.
      * @param field The field currently occupied.
      * @param newowles A list to return newly born owles.
@@ -59,9 +59,8 @@ public class Owl extends Animal
         incrementAge();
         incrementHunger();
         deathByAge();
-        setInfectedAge(30);
-        
-        
+        overComeDisease();
+        setInfectedAge(25,40);
          if(isAlive() ) {
 
             giveBirth(newOwls);            

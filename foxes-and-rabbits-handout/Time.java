@@ -8,10 +8,11 @@
 public class Time
 {
 
-    private static int time;
-    private static int currentTime;
-    private static int daysPassed;
-    private static boolean morning;
+    private static int time; // a counter used to measure the time
+    private static int currentTime; //the time that will be displayed
+    private static int daysPassed; //counter to keep track of the days passed
+    //boolean flags for the time of day
+    private static boolean morning; 
     private static boolean evening;
     private static boolean afternoon;
     private static boolean night;
@@ -40,6 +41,7 @@ public class Time
     }
     /**
      * The method to increment time.
+     * And set current time to a more suitable format
      */
     public static void incrementTime()
     {
@@ -53,6 +55,7 @@ public class Time
        }
     /**
      * A method to return the time and days elapsed to be displayed on the GUI
+     * Stored as a string
      */
     public static String getStringTime()
     {

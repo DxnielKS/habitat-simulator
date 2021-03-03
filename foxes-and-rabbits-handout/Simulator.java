@@ -21,21 +21,18 @@ public class Simulator
     private static final int DEFAULT_WIDTH = 120;
     // The default depth of the grid.
     private static final int DEFAULT_DEPTH = 80;
-    // The probability that a fox will be created in any given grid position.
-    private static final double SQUIREL_CREATION_PROBABILITY = 0.015;
-    // The probability that a rabbit will be created in any given grid position.
+
+    // The probability that of different classes that will be created in any given grid position.
     private static final double WORM_CREATION_PROBABILITY = 0.2;    
-
-    private static final double EAGLE_CREATION_PROBABILITY = 0.15; 
-
+    private static final double EAGLE_CREATION_PROBABILITY = 0.14; 
     private static final double OWL_CREATION_PROBABILITY = 0.2;
-    
     private static final double GRASS_CREATION_PROBABILITY = 0.02;
-
+    private static final double SQUIREL_CREATION_PROBABILITY = 0.015;
+    // The object used to implement weather
     private Weather weather_machine;
     // List of animals in the field.
     private List<Animal> animals;
-    
+    // List of plants in the field
     private List<Plants> plants;
     // The current state of the field.
     private Field field;
@@ -75,7 +72,7 @@ public class Simulator
         // Create a view of the state of each location in the field.
         view = new SimulatorView(depth, width);
         view.setColor(Worm.class, Color.ORANGE);
-        view.setColor(Squirel.class, Color.BLUE);
+        view.setColor(Squirrel.class, Color.BLUE);
         view.setColor(Eagle.class,Color.RED);
         view.setColor(Owl.class,Color.MAGENTA);
         view.setColor(Grass.class,Color.GREEN);
@@ -118,9 +115,10 @@ public class Simulator
         {
             weather_machine.change_weather(); // change the weather
         }
-        field.getFieldTime().setTimeOfDay();
+       
+        field.getFieldTime().setTimeOfDay();// This changes the time of day
         
-        setBackgroundColor();
+        setBackgroundColor(); //This uses the time of day to set a background colour
 
         // Provide space for newborn animals.
         List<Animal> newAnimals = new ArrayList<>();    
@@ -141,17 +139,17 @@ public class Simulator
       
         for(Iterator<Animal> it = animals.iterator(); it.hasNext(); ) {
              Animal animal = it.next();
-            if (field.getFieldTime().getMorning() == false && (animal.getNocturnal() == true) )
+            if (field.getFieldTime().getMorning() == false && (animal.getNocturnal() == true) )//nocturnal animals sleep in the morning
             {
                 animal.act(newAnimals);
             }
-            else if (field.getFieldTime().getNight() == false && animal.getNocturnal() == false)
+            else if (field.getFieldTime().getNight() == false && animal.getNocturnal() == false)//Animals should be asleep at night
             {
                 animal.act(newAnimals);
             if(! animal.isAlive()) {
                 it.remove();
             }
-           }
+            }
         }
                
         // Add the newly born foxes and rabbits to the main lists.
@@ -190,7 +188,7 @@ public class Simulator
             for(int col = 0; col < field.getWidth(); col++) {
                 if(rand.nextDouble() <= SQUIREL_CREATION_PROBABILITY) {
                     Location location = new Location(row, col);
-                    Squirel squirel = new Squirel(true, field, location);
+                    Squirrel squirel = new Squirrel(true, field, location);
                     animals.add(squirel);
                 }
                 else if(rand.nextDouble() <= WORM_CREATION_PROBABILITY) {
@@ -222,7 +220,9 @@ public class Simulator
             }
         }
     }
-    
+    /**
+     * This will find free locations within the field and spawn in grass at a random probability
+     */
     private void populatePlants()
     {
             Random rand = Randomizer.getRandom();
@@ -254,7 +254,9 @@ public class Simulator
             // wake up
         }
     }
-    
+    /**
+     * This changes the background color based on the time of day e.g. Night time is black.
+     */
     private void setBackgroundColor()
     {
         if (field.getFieldTime().getNight())
@@ -270,13 +272,14 @@ public class Simulator
             view.setEmptyColor(Color.gray);
         }
     }
-    
+    /**
+     * This checks to see if it is raining - if so plants will grow in any location that is free
+     */
     private void plantsInRain()
-    { // field.getFieldTime().getNight() == false && 
-            if(weather_machine.get_weather() == "Rain")
-            {
-                //System.out.println("This has been called");
-                populatePlants();
-            }
+    { 
+        if(weather_machine.get_weather() == "Rain")
+        {
+            populatePlants();
+        }
     }
 }

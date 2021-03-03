@@ -1,13 +1,15 @@
 #BlueJ class context
 comment0.target=Simulator
-comment0.text=\r\n\ A\ simple\ predator-prey\ simulator,\ based\ on\ a\ rectangular\ field\r\n\ containing\ eagles\ and\ worms.\r\n\ \r\n\ @author\ David\ J.\ Barnes\ and\ Michael\ K\u00F6lling\r\n\ @version\ 2016.02.29\ (2)\r\n
+comment0.text=\r\n\ A\ simple\ predator-prey\ simulator,\ based\ on\ a\ rectangular\ field\r\n\ containing\ rabbits\ and\ foxes.\r\n\ \r\n\ @author\ David\ J.\ Barnes\ and\ Michael\ K\u00F6lling\r\n\ @version\ 2016.02.29\ (2)\r\n
 comment1.params=
 comment1.target=Simulator()
 comment1.text=\r\n\ Construct\ a\ simulation\ field\ with\ default\ size.\r\n
 comment10.params=
 comment10.target=void\ setBackgroundColor()
+comment10.text=\r\n\ This\ changes\ the\ background\ color\ based\ on\ the\ time\ of\ day\ e.g.\ Night\ time\ is\ black.\r\n
 comment11.params=
 comment11.target=void\ plantsInRain()
+comment11.text=\r\n\ This\ checks\ to\ see\ if\ it\ is\ raining\ -\ if\ so\ plants\ will\ grow\ in\ any\ location\ that\ is\ free\r\n
 comment2.params=depth\ width
 comment2.target=Simulator(int,\ int)
 comment2.text=\r\n\ Create\ a\ simulation\ field\ with\ the\ given\ size.\r\n\ @param\ depth\ Depth\ of\ the\ field.\ Must\ be\ greater\ than\ zero.\r\n\ @param\ width\ Width\ of\ the\ field.\ Must\ be\ greater\ than\ zero.\r\n
@@ -28,6 +30,7 @@ comment7.target=void\ populate()
 comment7.text=\r\n\ Randomly\ populate\ the\ field\ with\ wildlife.\r\n
 comment8.params=
 comment8.target=void\ populatePlants()
+comment8.text=\r\n\ This\ will\ find\ free\ locations\ within\ the\ field\ and\ spawn\ in\ grass\ at\ a\ random\ probability\r\n
 comment9.params=millisec
 comment9.target=void\ delay(int)
 comment9.text=\r\n\ Pause\ for\ a\ given\ time.\r\n\ @param\ millisec\ \ The\ time\ to\ pause\ for,\ in\ milliseconds\r\n

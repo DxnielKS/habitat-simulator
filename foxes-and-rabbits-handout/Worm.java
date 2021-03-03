@@ -6,35 +6,16 @@ import java.util.Iterator;
  * A simple model of a worm.
  * worms age, move, breed, and die.
  * 
- * @author David J. Barnes and Michael Kölling
- * @version 2016.02.29 (2)
+ * @author Taseen Rahman
+ * @version 2021.02.25
  */
 public class Worm extends Animal
 {
-    // Characteristics shared by all worms (class variables).
-
-    // The age at which a worm can start to breed.
-    private static final int BREEDING_AGE = 3;
-    // The age to which a worm can live.
-    // The likelihood of a worm breeding.
-    private static final double BREEDING_PROBABILITY = 0.4;
-    // The maximum number of births.
-    private static final int MAX_LITTER_SIZE = 4;
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom();
     
-    private String foodName = "Grass";
-    
-    private Class foodClassName = Grass.class;
-    
-    private Class BREEDING_CLASS = Worm.class;
-    
     private static final int GRASS_FOOD_VALUE = 10;
-    // Individual characteristics (instance fields).
-    
-    // The worm's age.
-    
-    
+       
 
     /**
      * Create a new worm. A worm may be created with age
@@ -66,8 +47,8 @@ public class Worm extends Animal
         incrementAge();
         deathByAge();
         incrementHunger();
-        setInfectedAge(30);
-        //spreadDisease();
+        overComeDisease();
+        setInfectedAge(20,30);
         if(isAlive()){
             giveBirth(newworms);            
             // Try to move into a free location.
@@ -107,7 +88,11 @@ public class Worm extends Animal
         }
     }
 
-    
+    /**
+     * Look for worms adjacent to the current location.
+     * Only the first live grass found is eaten.
+     * @return Where food was found, or null if it wasn't.
+     */
     private Location findFood()
     {
         Field field = getField();
@@ -132,8 +117,4 @@ public class Worm extends Animal
         return null;
     }
     
-    protected String getFoodName()
-    {
-        return foodName;
-    }
 }
