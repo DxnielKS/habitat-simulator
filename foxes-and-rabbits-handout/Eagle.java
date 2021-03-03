@@ -13,20 +13,14 @@ public class Eagle extends Animal
 {
     // Characteristics shared by all squirrels (class variables).
     
-    // The age at which a squirrel can start to breed.
-    private static final int BREEDING_AGE = 7;
-    // The age to which a squirrel can live.
-    // The likelihood of a squirrel breeding.
-    private static final double BREEDING_PROBABILITY = 0.6;
-    // The maximum number of births.
-    private static final int MAX_LITTER_SIZE = 2;
-    // The food value of a single worm. In effect, this is the
-    // number of steps a fox can go before it has to eat again.
+    // The food value of a single prey. In effect, this is the
     private static final int SQUIREL_FOOD_VALUE = 5 ;
-    
+    private static final int OWL_FOOD_VALUE = 5;
     private static final int WORM_FOOD_VALUE = 3;
     // A shared random number generator to control breeding.
-    private static final Random rand = Randomizer.getRandom(); 
+    private static final Random rand = Randomizer.getRandom();
+    
+    
 
     
     // Individual characteristics (instance fields).
@@ -44,16 +38,11 @@ public class Eagle extends Animal
      */
     public Eagle(boolean randomAge, Field field, Location location)
     {
-        super(field, location);
+        super(field, location,7,0.6,2);
         //setMaxAge(50);
-        if (getInfected())
-        {
-            setMaxAge(30);
-        }
-        else
-        {
-            setMaxAge(50);
-        }
+
+        setMaxAge(50);
+        
         if(randomAge) {
             setAge(rand.nextInt(getMaxAge()));
             setFoodLevel(rand.nextInt(SQUIREL_FOOD_VALUE));
@@ -77,8 +66,10 @@ public class Eagle extends Animal
         incrementAge();
         incrementHunger();
         deathByAge();
+        setInfectedAge(30);
+        //spreadDisease();
         if(isAlive()) {
-            canBreed(newEagles);            
+            giveBirth(newEagles);            
             // Move towards a source of food if found.
             Location newLocation = findFood();
             if(newLocation == null) { 
@@ -138,6 +129,20 @@ public class Eagle extends Animal
                     return where;
                 }
             }
+             else if(animal instanceof Owl)
+            {
+                Owl owl = (Owl) animal;
+                if (owl.isAlive())
+                {
+                    owl.setDead();
+                    setFoodLevel( getFoodLevel() + OWL_FOOD_VALUE);
+                    if(getFoodLevel()> 10)
+                    {
+                        setFoodLevel(10);
+                    }
+                    return where;
+                }
+            }
         }
         return null;
     }
@@ -161,38 +166,5 @@ public class Eagle extends Animal
         }
     }
         
-    /**
-     * Generate a number representing the number of births,
-     * if it can breed.
-     * @return The number of births (may be zero).
-     */
-    private int breed()
-    {
-        int births = 0;
-        if(rand.nextDouble() <= BREEDING_PROBABILITY) {
-            births = rand.nextInt(MAX_LITTER_SIZE) + 1;
-        }
-        return births;
-    }
-
-    /**
-     * A fox can breed if it has reached the breeding age.
-     */
-    private void canBreed(List<Animal> newEagles)
-    {
-        Field field = getField();
-        List<Location> adjacent = field.adjacentLocations(getLocation());
-        Iterator<Location> it = adjacent.iterator();
-        while(it.hasNext()) {
-            Location where = it.next();
-            Object animal = field.getObjectAt(where);
-            if(animal instanceof Eagle) {
-                Eagle eagle = (Eagle) animal;
-                if(eagle.isAlive() && (getGender() != eagle.getGender()) && eagle.getAge() >= BREEDING_AGE && getAge() >= BREEDING_AGE) { 
-                        giveBirth(newEagles);
-                }
-            }
-        }
-    }
     }
 

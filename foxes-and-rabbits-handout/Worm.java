@@ -23,6 +23,12 @@ public class Worm extends Animal
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom();
     
+    private String foodName = "Grass";
+    
+    private Class foodClassName = Grass.class;
+    
+    private Class BREEDING_CLASS = Worm.class;
+    
     private static final int GRASS_FOOD_VALUE = 10;
     // Individual characteristics (instance fields).
     
@@ -40,7 +46,7 @@ public class Worm extends Animal
      */
     public Worm(boolean randomAge, Field field, Location location)
     {
-        super(field, location);
+        super(field, location,3,0.4,4);
         setAge(0);
         setMaxAge(30);
         if(randomAge) {
@@ -60,8 +66,10 @@ public class Worm extends Animal
         incrementAge();
         deathByAge();
         incrementHunger();
+        setInfectedAge(30);
+        //spreadDisease();
         if(isAlive()){
-            canBreed(newworms);            
+            giveBirth(newworms);            
             // Try to move into a free location.
             Location newLocation = findFood();
             if (newLocation == null)
@@ -98,41 +106,7 @@ public class Worm extends Animal
             newworms.add(young);
         }
     }
-        
-    /**
-     * Generate a number representing the number of births,
-     * if it can breed.
-     * @return The number of births (may be zero).
-     */
-    private int breed()
-    {
-        int births = 0;
-        if(rand.nextDouble() <= BREEDING_PROBABILITY) {
-            births = rand.nextInt(MAX_LITTER_SIZE) + 1;
-        }
-        return births;
-    }
 
-    /**
-     * A worm can breed if it has reached the breeding age.
-     * @return true if the worm can breed, false otherwise.
-     */
-    private void canBreed(List<Animal> newworms)
-    {
-        Field field = getField();
-        List<Location> adjacent = field.adjacentLocations(getLocation());
-        Iterator<Location> it = adjacent.iterator();
-        while(it.hasNext()) {
-            Location where = it.next();
-            Object animal = field.getObjectAt(where);
-            if(animal instanceof Worm) {
-                Worm worm = (Worm) animal;
-                if(worm.isAlive() && (getGender() != worm.getGender()) && worm.getAge() >= BREEDING_AGE && getAge() >= BREEDING_AGE) { 
-                        giveBirth(newworms);
-                }
-            }
-        }
-    }
     
     private Location findFood()
     {
@@ -156,5 +130,10 @@ public class Worm extends Animal
             }
         }
         return null;
+    }
+    
+    protected String getFoodName()
+    {
+        return foodName;
     }
 }

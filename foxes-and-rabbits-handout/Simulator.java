@@ -22,11 +22,11 @@ public class Simulator
     // The default depth of the grid.
     private static final int DEFAULT_DEPTH = 80;
     // The probability that a fox will be created in any given grid position.
-    private static final double SQUIREL_CREATION_PROBABILITY = 0.013;
+    private static final double SQUIREL_CREATION_PROBABILITY = 0.015;
     // The probability that a rabbit will be created in any given grid position.
     private static final double WORM_CREATION_PROBABILITY = 0.2;    
 
-    private static final double EAGLE_CREATION_PROBABILITY = 0.13; 
+    private static final double EAGLE_CREATION_PROBABILITY = 0.15; 
 
     private static final double OWL_CREATION_PROBABILITY = 0.2;
     
@@ -43,6 +43,7 @@ public class Simulator
     private int step;
     // A graphical view of the simulation.
     private SimulatorView view;
+
  
     
     /**
@@ -139,28 +140,28 @@ public class Simulator
         
       
         for(Iterator<Animal> it = animals.iterator(); it.hasNext(); ) {
-            Animal animal = it.next();
-            if (field.getFieldTime().getNight() && (animal.getNocturnal() == true) )
+             Animal animal = it.next();
+            if (field.getFieldTime().getMorning() == false && (animal.getNocturnal() == true) )
             {
                 animal.act(newAnimals);
             }
             else if (field.getFieldTime().getNight() == false && animal.getNocturnal() == false)
             {
                 animal.act(newAnimals);
-            }
-            
             if(! animal.isAlive()) {
                 it.remove();
             }
+           }
         }
                
         // Add the newly born foxes and rabbits to the main lists.
         animals.addAll(newAnimals);
         plants.addAll(newPlants);
         plantsInRain();
-        view.setInfoText(field.getFieldTime().getStringTime()+" and the weather is: "+weather_machine.get_weather());
+        view.setInfoText(field.getFieldTime().getStringTime()+" the weather is: "+weather_machine.get_weather());
         view.showStatus(step, field);
     }
+    
         
     /**
      * Reset the simulation to a starting position.

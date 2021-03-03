@@ -23,6 +23,8 @@ public class Field
     private int depth, width;
     // Storage for the animals.
     private Object[][] field;
+    
+    private int infectionCount;
 
     /**
      * Represent a field of the given dimensions.
@@ -214,5 +216,17 @@ public class Field
     public static Time getFieldTime()
     {
         return time;
+    }
+    
+    public void incrementInfection()
+    {
+ 
+         infectionCount++;
+       
+    }
+    
+    public int getInfectionCount()
+    {
+        return infectionCount;
     }
 }

@@ -40,7 +40,7 @@ public class Squirel extends Animal
      */
     public Squirel(boolean randomAge, Field field, Location location)
     {
-        super(field, location);
+        super(field, location,5,0.42,5);
         setMaxAge(70);
         if(randomAge) {
             setAge(rand.nextInt(getMaxAge()));
@@ -65,8 +65,10 @@ public class Squirel extends Animal
         incrementAge();
         incrementHunger();
         deathByAge();
+        setInfectedAge(30);
+        //spreadDisease();
         if(isAlive()) {
-            canBreed(newsquireles);            
+            giveBirth(newsquireles);            
             // Move towards a source of food if found.
             Location newLocation = findFood();
             if(newLocation == null) { 
@@ -94,6 +96,7 @@ public class Squirel extends Animal
         Field field = getField();
         List<Location> adjacent = field.adjacentLocations(getLocation());
         Iterator<Location> it = adjacent.iterator();
+        
         while(it.hasNext()) {
             Location where = it.next();
             Object animal = field.getObjectAt(where);
@@ -127,38 +130,5 @@ public class Squirel extends Animal
             newsquireles.add(young);
         }
     }
-        
-    /**
-     * Generate a number representing the number of births,
-     * if it can breed.
-     * @return The number of births (may be zero).
-     */
-    private int breed()
-    {
-        int births = 0;
-        if(rand.nextDouble() <= BREEDING_PROBABILITY) {
-            births = rand.nextInt(MAX_LITTER_SIZE) + 1;
-        }
-        return births;
-    }
 
-    /**
-     * A squirel can breed if it has reached the breeding age.
-     */
-    private void canBreed(List<Animal> newsquireles)
-    {
-        Field field = getField();
-        List<Location> adjacent = field.adjacentLocations(getLocation());
-        Iterator<Location> it = adjacent.iterator();
-        while(it.hasNext()) {
-            Location where = it.next();
-            Object animal = field.getObjectAt(where);
-            if(animal instanceof Squirel) {
-                Squirel squirel = (Squirel) animal;
-                 if(squirel.isAlive() && (getGender() != squirel.getGender()) && squirel.getAge() >= BREEDING_AGE && getAge() >= BREEDING_AGE) { 
-                    giveBirth(newsquireles);
-                 }
-            }
-        }
-    }
 }

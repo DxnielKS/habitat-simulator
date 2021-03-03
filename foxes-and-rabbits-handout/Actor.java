@@ -15,7 +15,6 @@ public abstract class Actor
     private Field field;
     // The animal's position in the field.
     private Location location;
-    
 
     private boolean isNocturnal;
     
@@ -59,7 +58,7 @@ public abstract class Actor
         field.place(this, newLocation);
     }
     /***
-     * 
+     *  Returns the field
      */
     protected Field getField()
     {

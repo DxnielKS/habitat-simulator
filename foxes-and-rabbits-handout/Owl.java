@@ -14,22 +14,14 @@ public class Owl extends Animal
 
     // Characteristics shared by all owles (class variables).
     
-    // The age at which an owl can start to breed.
-    private static final int BREEDING_AGE = 4;
-    // The likelihood of an owl breeding.
-    private static final double BREEDING_PROBABILITY = 0.1;
-    // The maximum number of births.
-    private static final int MAX_LITTER_SIZE = 13;
     // number of steps an owl can go before it has to eat again.
-    private static final int OWL_FOOD_VALUE = 9;
-    
-    private static final int WORM_FOOD_VALUE = 4;
+    private static final int WORM_FOOD_VALUE = 9;
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom(); 
+
     // Individual characteristics (instance fields).
     // The owl's age.
     // The owl's food level, which is increased by eating rabbits.
-    private int foodLevel;  
     /**
      * Create a owl. A owl can be created as a new born (age zero
      * and not hungry) or with a random age and food level.
@@ -40,23 +32,16 @@ public class Owl extends Animal
      */
     public Owl(boolean randomAge, Field field, Location location)
     {
-        super(field, location);
-        if (getInfected())
-        {
-            setMaxAge(60);
-        }
-        else
-        {
-            setMaxAge(100);
-        }
-        
+        super(field, location,4,0.5,2);
+        setMaxAge(40);
+
         if(randomAge) {
             setAge(rand.nextInt(getMaxAge()));
-            foodLevel = rand.nextInt(OWL_FOOD_VALUE);
+            setFoodLevel(rand.nextInt(WORM_FOOD_VALUE));
         }
         else {
             setAge(0);
-            foodLevel = OWL_FOOD_VALUE;
+            setFoodLevel(WORM_FOOD_VALUE);
         }
         this.toggleNocturnal();
         setGender();
@@ -70,11 +55,15 @@ public class Owl extends Animal
      * @param newowles A list to return newly born owles.
      */
     public void act(List<Animal> newOwls)
-    {
+     {
         incrementAge();
         incrementHunger();
         deathByAge();
-        if(isAlive() ) {
+        setInfectedAge(30);
+        
+        
+         if(isAlive() ) {
+
             giveBirth(newOwls);            
             // Move towards a source of food if found.
             Location newLocation = findFood();
@@ -91,18 +80,15 @@ public class Owl extends Animal
                 setDead();
             }
         }
-    }
-
-    
-    
-    
-    /**
+    } 
+ 
+    /** 
      * Check whether or not this owl is to give birth at this step.
      * New births will be made into free adjacent locations.
      * @param newowles A list to return newly born owles.
      */
     private void giveBirth(List<Animal> newOwls)
-    {
+        {
         // New owles are born into adjacent locations.
         // Get a list of adjacent free locations.
         Field field = getField();
@@ -112,9 +98,8 @@ public class Owl extends Animal
             Location loc = free.remove(0);
             Owl young = new Owl(false, field, loc);
             newOwls.add(young);
-            System.out.println("This is being run!");
-        }
-    }
+         }
+       }
         /**
      * Look for worms adjacent to the current location.
      * Only the first live worm is eaten.
@@ -142,43 +127,8 @@ public class Owl extends Animal
                 }
                 }
             }
-            else if(animal instanceof Worm)
-            {
-                Worm worm = (Worm) animal;
-                if (worm.isAlive())
-                {
-                    worm.setDead();
-                    setFoodLevel( getFoodLevel() + WORM_FOOD_VALUE);
-                    if(getFoodLevel()> 10)
-                    {
-                        setFoodLevel(10);
-                    }
-                    return where;
-                }
-            }
         }
         return null;
     }
-    /**
-     * Generate a number representing the number of births,
-     * if it can breed.
-     * @return The number of births (may be zero).
-     */
-    private int breed()
-    {
-        int births = 0;
-        if(canBreed() && rand.nextDouble() <= BREEDING_PROBABILITY) {
-            births = rand.nextInt(MAX_LITTER_SIZE) + 1;
-        }
-        return births;
-    }
     
-
-    /**
-     * A owl can breed if it has reached the breeding age.
-     */
-    private boolean canBreed()
-    {
-        return getAge() >= BREEDING_AGE;
-    }
 }
