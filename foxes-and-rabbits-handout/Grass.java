@@ -27,11 +27,14 @@ public class Grass extends Plants
     {
         incrementAge();
         deathByAge();
-        if (isAlive()){
-            grow(newGrass);
-        }
+        grow(newGrass);
+        
     }
-    
+    /**
+     * If the plant is still alive the grass will find a location adjacent to it that is free
+     * and then there is a probability that it will create a new object at that free location
+     * this is then added to the list of plants which is the parameter
+     */
     public void grow(List<Plants> newGrass)
     {
         if(isAlive())

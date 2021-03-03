@@ -12,16 +12,12 @@ import java.util.Random;
 public class Owl extends Animal
 {
 
-    // Characteristics shared by all owles (class variables).
     
     // number of steps an owl can go before it has to eat again.
     private static final int WORM_FOOD_VALUE = 9;
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom(); 
 
-    // Individual characteristics (instance fields).
-    // The owl's age.
-    // The owl's food level, which is increased by eating rabbits.
     /**
      * Create a owl. A owl can be created as a new born (age zero
      * and not hungry) or with a random age and food level.
@@ -32,7 +28,7 @@ public class Owl extends Animal
      */
     public Owl(boolean randomAge, Field field, Location location)
     {
-        super(field, location,4,0.5,2);
+        super(field, location,4,0.45,2);
         setMaxAge(40);
 
         if(randomAge) {
@@ -49,7 +45,7 @@ public class Owl extends Animal
     
     /**
      * This is what the owl does most of the time: it hunts for
-     * rabbits. In the process, it might breed, die of hunger,
+     * owls. In the process, it might breed, die of hunger,
      * or die of old age.
      * @param field The field currently occupied.
      * @param newowles A list to return newly born owles.
@@ -59,9 +55,8 @@ public class Owl extends Animal
         incrementAge();
         incrementHunger();
         deathByAge();
-        setInfectedAge(30);
-        
-        
+        overComeDisease();
+        setInfectedAge(25,40);
          if(isAlive() ) {
 
             giveBirth(newOwls);            

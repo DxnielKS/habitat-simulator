@@ -8,4 +8,5 @@ comment2.params=newGrass
 comment2.target=void\ act(java.util.List)
 comment3.params=newGrass
 comment3.target=void\ grow(java.util.List)
+comment3.text=\r\n\ If\ the\ plant\ is\ still\ alive\ the\ grass\ will\ find\ a\ location\ adjacent\ to\ it\ that\ is\ free\r\n\ and\ then\ there\ is\ a\ probability\ that\ it\ will\ create\ a\ new\ object\ at\ that\ free\ location\r\n\ this\ is\ then\ added\ to\ the\ list\ of\ plants\ which\ is\ the\ parameter\r\n
 numComments=4

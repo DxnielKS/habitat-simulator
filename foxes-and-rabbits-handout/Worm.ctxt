@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Worm
-comment0.text=\r\n\ A\ simple\ model\ of\ a\ worm.\r\n\ worms\ age,\ move,\ breed,\ and\ die.\r\n\ \r\n\ @author\ David\ J.\ Barnes\ and\ Michael\ K\u00F6lling\r\n\ @version\ 2016.02.29\ (2)\r\n
+comment0.text=\r\n\ A\ simple\ model\ of\ a\ worm.\r\n\ worms\ age,\ move,\ breed,\ and\ die.\r\n\ \r\n\ @author\ Taseen\ Rahman\r\n\ @version\ 2021.02.25\r\n
 comment1.params=randomAge\ field\ location
 comment1.target=Worm(boolean,\ Field,\ Location)
 comment1.text=\r\n\ Create\ a\ new\ worm.\ A\ worm\ may\ be\ created\ with\ age\r\n\ zero\ (a\ new\ born)\ or\ with\ a\ random\ age.\r\n\ \r\n\ @param\ randomAge\ If\ true,\ the\ worm\ will\ have\ a\ random\ age.\r\n\ @param\ field\ The\ field\ currently\ occupied.\r\n\ @param\ location\ The\ location\ within\ the\ field.\r\n
@@ -12,6 +12,5 @@ comment3.target=void\ giveBirth(java.util.List)
 comment3.text=\r\n\ Check\ whether\ or\ not\ this\ worm\ is\ to\ give\ birth\ at\ this\ step.\r\n\ New\ births\ will\ be\ made\ into\ free\ adjacent\ locations.\r\n\ @param\ newworms\ A\ list\ to\ return\ newly\ born\ worms.\r\n
 comment4.params=
 comment4.target=Location\ findFood()
-comment5.params=
-comment5.target=java.lang.String\ getFoodName()
-numComments=6
+comment4.text=\r\n\ Look\ for\ worms\ adjacent\ to\ the\ current\ location.\r\n\ Only\ the\ first\ live\ grass\ found\ is\ eaten.\r\n\ @return\ Where\ food\ was\ found,\ or\ null\ if\ it\ wasn't.\r\n
+numComments=5
