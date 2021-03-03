@@ -75,7 +75,7 @@ public class Simulator
         // Create a view of the state of each location in the field.
         view = new SimulatorView(depth, width);
         view.setColor(Worm.class, Color.ORANGE);
-        view.setColor(Squirel.class, Color.BLUE);
+        view.setColor(Squirrel.class, Color.BLUE);
         view.setColor(Eagle.class,Color.RED);
         view.setColor(Owl.class,Color.MAGENTA);
         view.setColor(Grass.class,Color.GREEN);
@@ -190,8 +190,8 @@ public class Simulator
             for(int col = 0; col < field.getWidth(); col++) {
                 if(rand.nextDouble() <= SQUIREL_CREATION_PROBABILITY) {
                     Location location = new Location(row, col);
-                    Squirel squirel = new Squirel(true, field, location);
-                    animals.add(squirel);
+                    Squirrel squirrel = new Squirrel(true, field, location);
+                    animals.add(squirrel);
                 }
                 else if(rand.nextDouble() <= WORM_CREATION_PROBABILITY) {
                     Location location = new Location(row, col);

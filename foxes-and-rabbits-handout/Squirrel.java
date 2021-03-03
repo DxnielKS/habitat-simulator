@@ -9,7 +9,7 @@ import java.util.Random;
  * @author David J. Barnes and Michael Kölling
  * @version 2016.02.29 (2)
  */
-public class Squirel extends Animal
+public class Squirrel extends Animal
 {
     // Characteristics shared by all squireles (class variables).
     
@@ -38,7 +38,7 @@ public class Squirel extends Animal
      * @param field The field currently occupied.
      * @param location The location within the field.
      */
-    public Squirel(boolean randomAge, Field field, Location location)
+    public Squirrel(boolean randomAge, Field field, Location location)
     {
         super(field, location,5,0.42,5);
         setMaxAge(70);
@@ -126,7 +126,7 @@ public class Squirel extends Animal
         int births = breed();
         for(int b = 0; b < births && free.size() > 0; b++) {
             Location loc = free.remove(0);
-            Squirel young = new Squirel(false, field, loc);
+            Squirrel young = new Squirrel(false, field, loc);
             newsquireles.add(young);
         }
     }

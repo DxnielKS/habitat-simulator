@@ -101,11 +101,11 @@ public class Eagle extends Animal
         while(it.hasNext()) {
             Location where = it.next();
             Object animal = field.getObjectAt(where);
-            if(animal instanceof Squirel) {
-                Squirel squirel = (Squirel) animal;
-                if(squirel.isAlive()) { 
-                    if (squirel.getAge()<7){
-                        squirel.setDead();
+            if(animal instanceof Squirrel) {
+                Squirrel squirrel = (Squirrel) animal;
+                if(squirrel.isAlive()) { 
+                    if (squirrel.getAge()<7){
+                        squirrel.setDead();
                         setFoodLevel( getFoodLevel() + SQUIREL_FOOD_VALUE);
                         if(getFoodLevel() > 10)
                         {
