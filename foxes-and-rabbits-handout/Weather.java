@@ -67,11 +67,11 @@ public class Weather
             weather_map.put("Cloudy",true);
         }
     }
-/**
- * A method to return the current weather in the simulator
- */
+    /**
+    * A method to return the current weather in the simulator
+    */
     public String get_weather()
-    {    //clear, rain, storm, cloudy
+    {
         String current_weather;
         for (String weather: weather_map.keySet())
         {

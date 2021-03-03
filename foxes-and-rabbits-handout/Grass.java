@@ -3,7 +3,7 @@ import java.util.Random;
 /**
  * Write a description of class Grass here.
  *
- * @author (your name)
+ * @author Taseen Rahman
  * @version (a version number or a date)
  */
 public class Grass extends Plants
@@ -22,12 +22,7 @@ public class Grass extends Plants
         setFertility(0.15);
         
     }
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
+
     public void act(List <Plants> newGrass)
     {
         incrementAge();

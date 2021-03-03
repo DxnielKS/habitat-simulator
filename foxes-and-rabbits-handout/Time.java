@@ -1,13 +1,13 @@
 
 /**
- * Write a description of class Time here.
+ * A class that keeps track of and increments time in the simulation.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Taseen Rahman
+ * @version 24/02/2021
  */
 public class Time
 {
-    // instance variables - replace the example below with your own
+
     private static int time;
     private static int currentTime;
     private static int daysPassed;
@@ -29,16 +29,20 @@ public class Time
         afternoon = false;
         evening = false;
     }
+    /**
+     * A method to set a new time
+     */
     public static void setTime(int newTime)
     {
         time = newTime;
         daysPassed = 0;
         currentTime = time/10;
     }
-
+    /**
+     * The method to increment time.
+     */
     public static void incrementTime()
     {
-        // put your code here
         time++;
         if (time>= 240)
         {
@@ -47,38 +51,42 @@ public class Time
         }
         currentTime = time/10;
        }
-    
+    /**
+     * A method to return the time and days elapsed to be displayed on the GUI
+     */
     public static String getStringTime()
     {
         String timeString = ("Time: "+ currentTime + ":00 and Days Passed: " + daysPassed); 
         return timeString;
     }
-    
+    /**
+     * A method to set the time of day.
+     */
     public static void setTimeOfDay()
     {
         incrementTime();
-        if (time>=0 && time < 70)
+        if (time>=0 && time < 70) // night
         {
             night = true;
             evening = false;
             afternoon = false;
             morning = false;
         }
-        else if (time>=70 && time < 120)
+        else if (time>=70 && time < 120) // morning
         {
             night = false;
             evening = false;
             afternoon = false;
             morning = true;
         }
-        else if (time>=120 && time < 170)
+        else if (time>=120 && time < 170) // afternoon
         {
             night = false;
             evening = false;
             afternoon = true;
             morning = false;
         }
-        else
+        else // evening
         {
             night = false;
             evening = true;
@@ -86,25 +94,37 @@ public class Time
             morning = false;
         }
     }
-    
+    /**
+     * Returns whether it is the morning.
+     */
     public static boolean getMorning()
     {
         return morning;
     }
-    
+    /**
+     * Returns whether it is the night.
+     */
     public static boolean getNight()
     {
         return night;
     }
-    
+    /**
+     * Returns whether it is the evening.
+     */
     public static boolean getEvening()
     {
         return evening;
     }
+    /**
+     * Returns whether it is the afternoon.
+     */
     public static boolean getAfternoon()
     {
         return afternoon;
     }
+    /**
+     * Returns the no. of days elapsed.
+     */
     public static int getDays()
     {
         return daysPassed;
