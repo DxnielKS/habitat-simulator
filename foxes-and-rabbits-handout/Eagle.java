@@ -34,7 +34,6 @@ public class Eagle extends Animal
     // The fox's food level, which is increased by eating worms.
     
 
- 
     /**
      * Create a fox. A fox can be created as a new born (age zero
      * and not hungry) or with a random age and food level.
@@ -46,7 +45,15 @@ public class Eagle extends Animal
     public Eagle(boolean randomAge, Field field, Location location)
     {
         super(field, location);
-        setMaxAge(50);
+        //setMaxAge(50);
+        if (getInfected())
+        {
+            setMaxAge(30);
+        }
+        else
+        {
+            setMaxAge(50);
+        }
         if(randomAge) {
             setAge(rand.nextInt(getMaxAge()));
             setFoodLevel(rand.nextInt(SQUIREL_FOOD_VALUE));
@@ -59,7 +66,7 @@ public class Eagle extends Animal
     }
     
     /**
-     * This is what the fox does most of the time: it hunts for
+     * This is what the eagle does most of the time: it hunts for
      * worms. In the process, it might breed, die of hunger,
      * or die of old age.
      * @param field The field currently occupied.

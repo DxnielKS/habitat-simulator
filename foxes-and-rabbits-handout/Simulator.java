@@ -28,7 +28,7 @@ public class Simulator
 
     private static final double EAGLE_CREATION_PROBABILITY = 0.13; 
 
-    private static final double OWL_CREATION_PROBABILITY = 0.1;
+    private static final double OWL_CREATION_PROBABILITY = 0.2;
     
     private static final double GRASS_CREATION_PROBABILITY = 0.02;
 
@@ -113,7 +113,7 @@ public class Simulator
     public void simulateOneStep()
     {
         step++;
-        if (step % 25 == 0) // every 25 steps
+        if (step % 10 == 0) // every 40 steps
         {
             weather_machine.change_weather(); // change the weather
         }
@@ -208,8 +208,7 @@ public class Simulator
                 {
                   Location location = new Location(row, col);
                   Owl owl = new Owl(true, field, location);
-                  animals.add(owl);  
-
+                  animals.add(owl);   
                 }
                   else if(rand.nextDouble() <= GRASS_CREATION_PROBABILITY)
                 {
@@ -272,10 +271,10 @@ public class Simulator
     }
     
     private void plantsInRain()
-    {
-            if(field.getFieldTime().getNight() == false && weather_machine.get_weather() == "Rain")
+    { // field.getFieldTime().getNight() == false && 
+            if(weather_machine.get_weather() == "Rain")
             {
-                System.out.println("This has been called");
+                //System.out.println("This has been called");
                 populatePlants();
             }
     }

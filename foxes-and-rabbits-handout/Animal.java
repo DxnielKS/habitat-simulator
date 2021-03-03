@@ -100,4 +100,8 @@ public abstract class Animal extends Actor
             setDead();
         }
     }
+    public Boolean getInfected()
+    {
+        return this.isInfected;
+    }
 }
