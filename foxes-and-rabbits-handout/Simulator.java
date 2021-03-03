@@ -6,7 +6,7 @@ import java.awt.Color;
 
 /**
  * A simple predator-prey simulator, based on a rectangular field
- * containing rabbits and foxes.
+ * containing eagles and worms.
  * 
  * @author David J. Barnes and Michael Kölling
  * @version 2016.02.29 (2)
@@ -15,21 +15,18 @@ public class Simulator
 {
     // Constants representing configuration information for the simulation.
     // The default width for the grid.
-    
-    // a weather machine to change weather
-    
     private static final int DEFAULT_WIDTH = 120;
     // The default depth of the grid.
     private static final int DEFAULT_DEPTH = 80;
-    // The probability that a fox will be created in any given grid position.
-    private static final double SQUIREL_CREATION_PROBABILITY = 0.013;
-    // The probability that a rabbit will be created in any given grid position.
+    // The probability that a squirrel will be created in any given grid position.
+    private static final double SQUIRREL_CREATION_PROBABILITY = 0.013;
+    // The probability that a worm will be created in any given grid position.
     private static final double WORM_CREATION_PROBABILITY = 0.2;    
-
+    // The probability that a eagle will be created in any given grid position.
     private static final double EAGLE_CREATION_PROBABILITY = 0.13; 
-
+    // The probability that a owl will be created in any given grid position.
     private static final double OWL_CREATION_PROBABILITY = 0.2;
-    
+    // The probability that grass will be created in any given grid position.
     private static final double GRASS_CREATION_PROBABILITY = 0.02;
 
     private Weather weather_machine;
@@ -74,7 +71,7 @@ public class Simulator
         // Create a view of the state of each location in the field.
         view = new SimulatorView(depth, width);
         view.setColor(Worm.class, Color.ORANGE);
-        view.setColor(Squirel.class, Color.BLUE);
+        view.setColor(Squirrel.class, Color.BLUE);
         view.setColor(Eagle.class,Color.RED);
         view.setColor(Owl.class,Color.MAGENTA);
         view.setColor(Grass.class,Color.GREEN);
@@ -187,10 +184,10 @@ public class Simulator
         field.clear();
         for(int row = 0; row < field.getDepth(); row++) {
             for(int col = 0; col < field.getWidth(); col++) {
-                if(rand.nextDouble() <= SQUIREL_CREATION_PROBABILITY) {
+                if(rand.nextDouble() <= SQUIRREL_CREATION_PROBABILITY) {
                     Location location = new Location(row, col);
-                    Squirel squirel = new Squirel(true, field, location);
-                    animals.add(squirel);
+                    Squirrel squirrel = new Squirrel(true, field, location);
+                    animals.add(squirrel);
                 }
                 else if(rand.nextDouble() <= WORM_CREATION_PROBABILITY) {
                     Location location = new Location(row, col);
