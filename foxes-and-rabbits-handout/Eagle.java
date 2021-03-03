@@ -11,19 +11,18 @@ import java.util.Random;
  */
 public class Eagle extends Animal
 {
-    // Characteristics shared by all squirrels (class variables).
+    // Characteristics shared by all eagles (class variables).
     
-    // The age at which a squirrel can start to breed.
+    // The age at which a eagle can start to breed.
     private static final int BREEDING_AGE = 7;
-    // The age to which a squirrel can live.
-    // The likelihood of a squirrel breeding.
+    // The age to which a eagle can live.
+    // The likelihood of a eagle breeding.
     private static final double BREEDING_PROBABILITY = 0.6;
     // The maximum number of births.
     private static final int MAX_LITTER_SIZE = 2;
-    // The food value of a single worm. In effect, this is the
-    // number of steps a fox can go before it has to eat again.
+    // The food value of a single squirrel.
     private static final int SQUIRREL_FOOD_VALUE = 5 ;
-    
+    // The food value of a single worm.
     private static final int WORM_FOOD_VALUE = 3;
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom(); 
