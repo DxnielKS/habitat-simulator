@@ -28,9 +28,9 @@ public class Simulator
 
     private static final double EAGLE_CREATION_PROBABILITY = 0.13; 
 
-    private static final double OWL_CREATION_PROBABILITY = 0.09;
+    private static final double OWL_CREATION_PROBABILITY = 0.1;
     
-    private static final double GRASS_CREATION_PROBABILITY = 0.06;
+    private static final double GRASS_CREATION_PROBABILITY = 0.02;
 
     private Weather weather_machine;
     // List of animals in the field.
@@ -128,11 +128,9 @@ public class Simulator
         
         for(Iterator<Plants> it = plants.iterator(); it.hasNext(); ) {
             Plants plants = it.next();
-            if (field.getFieldTime().getNight() == false)
-                {
-                    plants.act(newPlants);
-  
-            }
+
+            plants.act(newPlants);
+
             
             if(! plants.isAlive()) {
                 it.remove();
@@ -277,7 +275,7 @@ public class Simulator
     {
             if(field.getFieldTime().getNight() == false && weather_machine.get_weather() == "Rain")
             {
-                System.out.println("This has beem called");
+                System.out.println("This has been called");
                 populatePlants();
             }
     }

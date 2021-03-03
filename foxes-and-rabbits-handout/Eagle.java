@@ -3,20 +3,20 @@ import java.util.Iterator;
 import java.util.Random;
 
 /**
- * A simple model of a fox.
- * Foxes age, move, eat worms, and die.
+ * A simple model of a squirrel.
+ * squirrels age, move, eat, and die.
  * 
  * @author David J. Barnes and Michael Kölling
  * @version 2016.02.29 (2)
  */
 public class Eagle extends Animal
 {
-    // Characteristics shared by all foxes (class variables).
+    // Characteristics shared by all squirrels (class variables).
     
-    // The age at which a fox can start to breed.
+    // The age at which a squirrel can start to breed.
     private static final int BREEDING_AGE = 7;
-    // The age to which a fox can live.
-    // The likelihood of a fox breeding.
+    // The age to which a squirrel can live.
+    // The likelihood of a squirrel breeding.
     private static final double BREEDING_PROBABILITY = 0.6;
     // The maximum number of births.
     private static final int MAX_LITTER_SIZE = 2;

@@ -1,20 +1,17 @@
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.HashMap;
 /**
- * Write a description of class Weather here.
+ * A class that stores the current weather states and methods to change weather.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Daniel Saisani
+ * @version 02/03/2021
  */
 public class Weather
 {
     // instance variables - replace the example below with your own
 
     private Random randomGenerator;
-    private boolean clear, rain, storm, cloudy;
-    private ArrayList<String> weather_list;
-    //private HashMap<> weather_map;
+    private HashMap<String, Boolean> weather_map;
     /**
      * Constructor for objects of class Weather. The weather defaults to clear weather.
      */
@@ -22,63 +19,67 @@ public class Weather
     {
         // initialise instance variables
         randomGenerator = new Random();
-        weather_list = new ArrayList<String>();
-        weather_list.add("Clear");
-        weather_list.add("Rain");
-        weather_list.add("Storm");
-        weather_list.add("Cloudy");
-        change_weather();
+        weather_map = new HashMap<>();
+        fill_weather_map();
     }
     /**
-     * Method to change the weather randomly in the simulator
+     * initialises the map of weather states
+     */
+    private void fill_weather_map()
+    {
+        weather_map.put("Clear",true);
+        weather_map.put("Rain",false);
+        weather_map.put("Storm",false);
+        weather_map.put("Cloudy",false);
+    }
+    /**
+     * A method to change the weather randomly
      */
     public void change_weather()
     {
         int new_weather_index = randomGenerator.nextInt(4);
-        if (weather_list.get(new_weather_index) == "Clear")
+        if (new_weather_index == 0)
         {
-            clear = true;
-            rain = storm = cloudy = false;
-            System.out.println("Weather changed to clear");
+            weather_map.put("Clear",true);
+            weather_map.put("Rain",false);
+            weather_map.put("Storm",false);
+            weather_map.put("Cloudy",false);
         }
-        else if(weather_list.get(new_weather_index) == "Rain")
+        else if(new_weather_index == 1)
         {
-            rain = true;
-            clear = storm = cloudy = false;
-            System.out.println("Weather changed to rain");
+            weather_map.put("Clear",false);
+            weather_map.put("Rain",true);
+            weather_map.put("Storm",false);
+            weather_map.put("Cloudy",false);
         }
-        else if (weather_list.get(new_weather_index) == "Storm")
+        else if (new_weather_index == 2)
         {
-            storm = true;
-            clear = rain = cloudy = false;
-            System.out.println("Weather changed to storm");
+            weather_map.put("Clear",false);
+            weather_map.put("Rain",false);
+            weather_map.put("Storm",true);
+            weather_map.put("Cloudy",false);
         }
-        else if (weather_list.get(new_weather_index) == "Cloudy")
+        else if (new_weather_index == 3)
         {
-            cloudy = true;
-            rain = storm = clear = false;
-            System.out.println("Weather changed to cloudy");
+            weather_map.put("Clear",false);
+            weather_map.put("Rain",false);
+            weather_map.put("Storm",false);
+            weather_map.put("Cloudy",true);
         }
     }
-
+/**
+ * A method to return the current weather in the simulator
+ */
     public String get_weather()
     {    //clear, rain, storm, cloudy
-        if (this.clear)
+        String current_weather;
+        for (String weather: weather_map.keySet())
         {
-            return "Clear";
+            if (weather_map.get(weather) == true)
+            {
+                return weather;
+            }
         }
-        else if (this.rain)
-        {
-            return "Rain";
-        }
-        else if (this.storm)
-        {
-            return "Storm";
-        }
-        else if (this.cloudy)
-        {
-            return "Cloudy";
-        }
-        return null;
+        return "none";
     }
 }

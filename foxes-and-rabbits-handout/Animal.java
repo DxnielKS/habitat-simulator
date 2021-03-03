@@ -23,8 +23,9 @@ public abstract class Animal extends Actor
     
     private boolean isInfected; // a flag to indicate whether an animal is ill or not
     
+    private static final double infection_chance = 0.01; // chance of infection when populating the field
     private static final double infection_rate = 0.01; // rate of infection
-    
+    private static final double death_rate = 0.01; // chance of death from disease
     
     /**
      * Create a new animal at location in field.
@@ -35,9 +36,13 @@ public abstract class Animal extends Actor
     public Animal(Field field, Location location)
     {
         super(field,location);
-        if (random.nextDouble() >= infection_rate)
+        if (random.nextDouble() >= infection_chance)
         {
             isInfected = true;
+        }
+        else
+        {
+            isInfected = false;
         }
     }
     /**

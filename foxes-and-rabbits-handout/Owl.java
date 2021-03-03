@@ -4,7 +4,7 @@ import java.util.Random;
 
 /**
  * A simple model of a owl.
- * owles age, move, eat rabbits, and die.
+ * owles age, move, eat worms, and die.
  * 
  * @author Daniel Saisani
  * @version 18/02/2021
@@ -15,7 +15,7 @@ public class Owl extends Animal
     // Characteristics shared by all owles (class variables).
     
     // The age at which an owl can start to breed.
-    private static final int BREEDING_AGE = 7;
+    private static final int BREEDING_AGE = 4;
     // The likelihood of an owl breeding.
     private static final double BREEDING_PROBABILITY = 0.1;
     // The maximum number of births.
