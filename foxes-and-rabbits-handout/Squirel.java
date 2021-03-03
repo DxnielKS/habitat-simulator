@@ -17,7 +17,7 @@ public class Squirel extends Animal
     private static final int BREEDING_AGE = 5;
     // The age to which a squirel can live.
     // The likelihood of a squirel breeding.
-    private static final double BREEDING_PROBABILITY = 0.40;
+    private static final double BREEDING_PROBABILITY = 0.42;
     // The maximum number of births.
     private static final int MAX_LITTER_SIZE = 3;
     // The food value of a single WORM. In effect, this is the

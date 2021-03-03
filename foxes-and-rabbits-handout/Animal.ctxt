@@ -21,4 +21,6 @@ comment7.target=int\ getFoodLevel()
 comment8.params=
 comment8.target=void\ incrementHunger()
 comment8.text=\r\n\ Make\ this\ fox\ more\ hungry.\ This\ could\ result\ in\ the\ fox's\ death.\r\n
-numComments=9
+comment9.params=
+comment9.target=java.lang.Boolean\ getInfected()
+numComments=10

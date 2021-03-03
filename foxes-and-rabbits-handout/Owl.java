@@ -22,7 +22,8 @@ public class Owl extends Animal
     private static final int MAX_LITTER_SIZE = 13;
     // number of steps an owl can go before it has to eat again.
     private static final int OWL_FOOD_VALUE = 9;
-    private static final int RABBIT_FOOD_VALUE = 4;
+    
+    private static final int WORM_FOOD_VALUE = 4;
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom(); 
     // Individual characteristics (instance fields).
@@ -40,8 +41,15 @@ public class Owl extends Animal
     public Owl(boolean randomAge, Field field, Location location)
     {
         super(field, location);
-        setMaxAge(100);
-        this.toggleNocturnal();
+        if (getInfected())
+        {
+            setMaxAge(60);
+        }
+        else
+        {
+            setMaxAge(100);
+        }
+        
         if(randomAge) {
             setAge(rand.nextInt(getMaxAge()));
             foodLevel = rand.nextInt(OWL_FOOD_VALUE);
@@ -50,7 +58,8 @@ public class Owl extends Animal
             setAge(0);
             foodLevel = OWL_FOOD_VALUE;
         }
-        getGender();
+        this.toggleNocturnal();
+        setGender();
     }
     
     /**
@@ -65,10 +74,10 @@ public class Owl extends Animal
         incrementAge();
         incrementHunger();
         deathByAge();
-        if(isAlive() && getNight()) {
+        if(isAlive() ) {
             giveBirth(newOwls);            
             // Move towards a source of food if found.
-            Location newLocation = null;
+            Location newLocation = findFood();
             if(newLocation == null) { 
                 // No food found - try to move to a free location.
                 newLocation = getField().freeAdjacentLocation(getLocation());
@@ -103,9 +112,53 @@ public class Owl extends Animal
             Location loc = free.remove(0);
             Owl young = new Owl(false, field, loc);
             newOwls.add(young);
+            System.out.println("This is being run!");
         }
     }
-        
+        /**
+     * Look for worms adjacent to the current location.
+     * Only the first live worm is eaten.
+     * @return Where food was found, or null if it wasn't.
+     */
+    private Location findFood()
+    {
+        Field field = getField();
+        List<Location> adjacent = field.adjacentLocations(getLocation());
+        Iterator<Location> it = adjacent.iterator();
+        while(it.hasNext()) {
+            Location where = it.next();
+            Object animal = field.getObjectAt(where);
+            if(animal instanceof Worm) {
+                Worm worm = (Worm) animal;
+                if(worm.isAlive()) { 
+                    if (worm.getAge()<7){
+                        worm.setDead();
+                        setFoodLevel( getFoodLevel() + WORM_FOOD_VALUE);
+                        if(getFoodLevel() > 10)
+                        {
+                            setFoodLevel(10);
+                        }
+                        return where;
+                }
+                }
+            }
+            else if(animal instanceof Worm)
+            {
+                Worm worm = (Worm) animal;
+                if (worm.isAlive())
+                {
+                    worm.setDead();
+                    setFoodLevel( getFoodLevel() + WORM_FOOD_VALUE);
+                    if(getFoodLevel()> 10)
+                    {
+                        setFoodLevel(10);
+                    }
+                    return where;
+                }
+            }
+        }
+        return null;
+    }
     /**
      * Generate a number representing the number of births,
      * if it can breed.
@@ -119,6 +172,7 @@ public class Owl extends Animal
         }
         return births;
     }
+    
 
     /**
      * A owl can breed if it has reached the breeding age.
